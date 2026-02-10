@@ -67,7 +67,7 @@ export default function VIPModal({ isOpen, onClose, onUpgrade: _onUpgrade, trial
   }
 
   const handleBuyClick = () => {
-    BrowserOpenURL('https://clearc.top/pay.php')
+    BrowserOpenURL('https://clearc.top/pay.php?lang=zh')
   }
 
   const handleClose = () => {

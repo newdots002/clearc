@@ -82,7 +82,7 @@ export default function VIPPage() {
 
   const handleBuyClick = () => {
     // 打开购买页面
-    BrowserOpenURL('https://clearc.top/pay.php')
+    BrowserOpenURL('https://clearc.top/pay.php?lang=zh')
   }
 
   const features = [

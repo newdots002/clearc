@@ -251,13 +251,92 @@ if ($action === 'pay' && $_SERVER['REQUEST_METHOD'] === 'POST') {
 // 显示页面的变量
 $showSuccess = isset($paymentSuccess) && $paymentSuccess;
 $displayCode = $activationCode ?? '';
+
+// 国际化支持
+$lang = $_GET['lang'] ?? 'zh';
+if (!in_array($lang, ['en', 'zh'])) {
+    $lang = 'zh';
+}
+
+// 多语言文本
+$i18n = [
+    'zh' => [
+        'page_title' => '购买永久 VIP - ClearC',
+        'nav_features' => '功能特性',
+        'nav_pricing' => '价格',
+        'nav_docs' => '文档',
+        'nav_back' => '返回首页',
+        'home_url' => 'zh.html',
+        'vip_title' => '永久 VIP 授权',
+        'vip_subtitle' => '一次付款，终身使用所有功能',
+        'price_label' => '永久授权 · 无需续费',
+        'feature_1' => '无限次磁盘分析',
+        'feature_2' => '后台自动扫描',
+        'feature_3' => '优先技术支持',
+        'feature_4' => '所有未来更新',
+        'feature_5' => '跨平台永久使用',
+        'pay_alipay' => '支付宝',
+        'pay_wechat' => '微信支付',
+        'pay_btn' => '立即支付 ¥5.00',
+        'pay_note' => '支付完成后将自动生成激活码，请妥善保存',
+        'success_title' => '支付成功！',
+        'success_subtitle' => '感谢您购买 ClearC 永久 VIP',
+        'code_label' => '您的激活码',
+        'copy_btn' => '复制激活码',
+        'how_to_activate' => '如何激活？',
+        'step_1' => '打开 ClearC 软件',
+        'step_2' => '点击左侧菜单的 "VIP 会员"',
+        'step_3' => '点击 "激活 VIP" 按钮',
+        'step_4' => '输入上方的激活码',
+        'step_5' => '点击确认，即可永久激活',
+        'back_home' => '← 返回首页',
+        'loading_text' => '正在跳转支付页面...',
+        'copied_text' => '已复制到剪贴板',
+    ],
+    'en' => [
+        'page_title' => 'Get Lifetime VIP - ClearC',
+        'nav_features' => 'Features',
+        'nav_pricing' => 'Pricing',
+        'nav_docs' => 'Docs',
+        'nav_back' => 'Back to Home',
+        'home_url' => 'index.html',
+        'vip_title' => 'Lifetime VIP License',
+        'vip_subtitle' => 'One-time payment, lifetime access to all features',
+        'price_label' => 'Lifetime License · No Subscription',
+        'feature_1' => 'Unlimited disk analysis',
+        'feature_2' => 'Background auto-scan',
+        'feature_3' => 'Priority support',
+        'feature_4' => 'All future updates',
+        'feature_5' => 'Cross-platform forever',
+        'pay_alipay' => 'Alipay',
+        'pay_wechat' => 'WeChat Pay',
+        'pay_btn' => 'Pay Now ¥5.00',
+        'pay_note' => 'Activation code will be generated after payment. Please save it.',
+        'success_title' => 'Payment Successful!',
+        'success_subtitle' => 'Thank you for purchasing ClearC Lifetime VIP',
+        'code_label' => 'Your Activation Code',
+        'copy_btn' => 'Copy Code',
+        'how_to_activate' => 'How to Activate?',
+        'step_1' => 'Open ClearC application',
+        'step_2' => 'Click "VIP" in the left menu',
+        'step_3' => 'Click "Activate VIP" button',
+        'step_4' => 'Enter the activation code above',
+        'step_5' => 'Click confirm to activate permanently',
+        'back_home' => '← Back to Home',
+        'loading_text' => 'Redirecting to payment...',
+        'copied_text' => 'Copied to clipboard',
+    ]
+];
+
+$t = $i18n[$lang];
+$htmlLang = $lang === 'zh' ? 'zh-CN' : 'en';
 ?>
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="<?php echo $htmlLang; ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>购买永久 VIP - ClearC</title>
+    <title><?php echo $t['page_title']; ?></title>
     <meta name="description" content="购买 ClearC 永久 VIP 授权，一次付款，终身使用。">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%2322D3EE' rx='15' width='100' height='100'/><text x='50' y='70' font-size='60' font-weight='bold' text-anchor='middle' fill='%230A0F1C'>C</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -572,17 +651,17 @@ $displayCode = $activationCode ?? '';
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <a href="zh.html" class="logo-section">
+            <a href="<?php echo $t['home_url']; ?>" class="logo-section">
                 <div class="logo-icon">C</div>
                 <span class="logo-name">ClearC</span>
             </a>
             <nav class="nav-section">
-                <a href="zh.html#features" class="nav-link">功能特性</a>
-                <a href="zh.html#pricing" class="nav-link">价格</a>
-                <a href="zh.html#faq" class="nav-link">文档</a>
+                <a href="<?php echo $t['home_url']; ?>#features" class="nav-link"><?php echo $t['nav_features']; ?></a>
+                <a href="<?php echo $t['home_url']; ?>#pricing" class="nav-link"><?php echo $t['nav_pricing']; ?></a>
+                <a href="<?php echo $t['home_url']; ?>#faq" class="nav-link"><?php echo $t['nav_docs']; ?></a>
             </nav>
             <div class="cta-section">
-                <a href="zh.html" class="btn btn-secondary">返回首页</a>
+                <a href="<?php echo $t['home_url']; ?>" class="btn btn-secondary"><?php echo $t['nav_back']; ?></a>
             </div>
         </div>
     </header>
@@ -592,73 +671,69 @@ $displayCode = $activationCode ?? '';
         <div class="pay-container">
             <div class="pay-card">
                 <!-- Payment Form -->
-                <form class="pay-form <?php echo $showSuccess ? 'hidden' : ''; ?>" id="payForm" method="POST" action="pay.php?action=pay">
+                <form class="pay-form <?php echo $showSuccess ? 'hidden' : ''; ?>" id="payForm" method="POST" action="pay.php?action=pay&lang=<?php echo $lang; ?>">
                     <div class="pay-icon">VIP</div>
-                    <h1 class="pay-title">永久 VIP 授权</h1>
-                    <p class="pay-subtitle">一次付款，终身使用所有功能</p>
+                    <h1 class="pay-title"><?php echo $t['vip_title']; ?></h1>
+                    <p class="pay-subtitle"><?php echo $t['vip_subtitle']; ?></p>
                     
                     <div class="pay-price-box">
                         <div class="pay-price">¥5.00</div>
-                        <div class="pay-price-label">永久授权 · 无需续费</div>
+                        <div class="pay-price-label"><?php echo $t['price_label']; ?></div>
                     </div>
                     
                     <ul class="pay-features">
-                        <li><span class="check">✓</span> 无限次磁盘分析</li>
-                        <li><span class="check">✓</span> 后台自动扫描</li>
-                        <li><span class="check">✓</span> 优先技术支持</li>
-                        <li><span class="check">✓</span> 所有未来更新</li>
-                        <li><span class="check">✓</span> 跨平台永久使用</li>
+                        <li><span class="check">✓</span> <?php echo $t['feature_1']; ?></li>
+                        <li><span class="check">✓</span> <?php echo $t['feature_2']; ?></li>
+                        <li><span class="check">✓</span> <?php echo $t['feature_3']; ?></li>
+                        <li><span class="check">✓</span> <?php echo $t['feature_4']; ?></li>
+                        <li><span class="check">✓</span> <?php echo $t['feature_5']; ?></li>
                     </ul>
                     
                     <div class="pay-methods">
                         <div class="pay-method active" data-method="alipay" onclick="selectMethod(this, 'alipay')">
                             <span class="pay-method-icon">💳</span>
-                            <span class="pay-method-name">支付宝</span>
+                            <span class="pay-method-name"><?php echo $t['pay_alipay']; ?></span>
                         </div>
                         <div class="pay-method" data-method="wxpay" onclick="selectMethod(this, 'wxpay')">
                             <span class="pay-method-icon">💬</span>
-                            <span class="pay-method-name">微信支付</span>
-                        </div>
-                        <div class="pay-method" data-method="qqpay" onclick="selectMethod(this, 'qqpay')">
-                            <span class="pay-method-icon">🐧</span>
-                            <span class="pay-method-name">QQ钱包</span>
+                            <span class="pay-method-name"><?php echo $t['pay_wechat']; ?></span>
                         </div>
                     </div>
                     
                     <input type="hidden" name="method" id="payMethod" value="alipay">
                     
                     <button type="submit" class="btn btn-primary pay-btn" id="payBtn">
-                        立即支付 ¥5.00
+                        <?php echo $t['pay_btn']; ?>
                     </button>
                     
-                    <p class="pay-note">支付完成后将自动生成激活码，请妥善保存</p>
+                    <p class="pay-note"><?php echo $t['pay_note']; ?></p>
                 </form>
                 
                 <!-- Success State -->
                 <div class="pay-success <?php echo $showSuccess ? 'active' : ''; ?>" id="paySuccess">
                     <div class="success-icon">✓</div>
-                    <h1 class="pay-title">支付成功！</h1>
-                    <p class="pay-subtitle">感谢您购买 ClearC 永久 VIP</p>
+                    <h1 class="pay-title"><?php echo $t['success_title']; ?></h1>
+                    <p class="pay-subtitle"><?php echo $t['success_subtitle']; ?></p>
                     
                     <div class="activation-code-box">
-                        <div class="activation-code-label">您的激活码</div>
+                        <div class="activation-code-label"><?php echo $t['code_label']; ?></div>
                         <div class="activation-code" id="activationCode"><?php echo htmlspecialchars($displayCode); ?></div>
-                        <button type="button" class="btn btn-secondary copy-btn" id="copyBtn">复制激活码</button>
+                        <button type="button" class="btn btn-secondary copy-btn" id="copyBtn"><?php echo $t['copy_btn']; ?></button>
                     </div>
                     
                     <div class="activation-instructions">
-                        <h4>如何激活？</h4>
+                        <h4><?php echo $t['how_to_activate']; ?></h4>
                         <ol>
-                            <li>打开 ClearC 软件</li>
-                            <li>点击左侧菜单的 "VIP 会员"</li>
-                            <li>点击 "激活 VIP" 按钮</li>
-                            <li>输入上方的激活码</li>
-                            <li>点击确认，即可永久激活</li>
+                            <li><?php echo $t['step_1']; ?></li>
+                            <li><?php echo $t['step_2']; ?></li>
+                            <li><?php echo $t['step_3']; ?></li>
+                            <li><?php echo $t['step_4']; ?></li>
+                            <li><?php echo $t['step_5']; ?></li>
                         </ol>
                     </div>
                     
-                    <a href="zh.html" class="back-link">
-                        ← 返回首页
+                    <a href="<?php echo $t['home_url']; ?>" class="back-link">
+                        <?php echo $t['back_home']; ?>
                     </a>
                 </div>
             </div>
@@ -668,11 +743,11 @@ $displayCode = $activationCode ?? '';
     <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-spinner"></div>
-        <div class="loading-text">正在跳转支付页面...</div>
+        <div class="loading-text"><?php echo $t['loading_text']; ?></div>
     </div>
 
     <!-- Toast -->
-    <div class="toast" id="toast">已复制到剪贴板</div>
+    <div class="toast" id="toast"><?php echo $t['copied_text']; ?></div>
 
     <script>
         // 支付方式选择
@@ -691,7 +766,7 @@ $displayCode = $activationCode ?? '';
         document.getElementById('copyBtn').addEventListener('click', function() {
             const code = document.getElementById('activationCode').textContent;
             navigator.clipboard.writeText(code).then(() => {
-                showToast('已复制到剪贴板');
+                showToast('<?php echo $t['copied_text']; ?>');
             }).catch(() => {
                 // Fallback
                 const textArea = document.createElement('textarea');
@@ -700,7 +775,7 @@ $displayCode = $activationCode ?? '';
                 textArea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textArea);
-                showToast('已复制到剪贴板');
+                showToast('<?php echo $t['copied_text']; ?>');
             });
         });
         
