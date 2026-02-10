@@ -1,0 +1,48 @@
+# 二进制与构建产物
+*.exe
+*.exe~
+clearc.exe
+build/bin/
+dist/
+
+# Go
+*.test
+*.out
+vendor/
+coverage.html
+coverage.out
+
+# 前端 / Node
+frontend/node_modules/
+frontend/dist/
+frontend/package.json.md5
+*.local
+.env
+.env.local
+.env.*.local
+
+# Wails 生成（若需版本控制可注释）
+# frontend/wailsjs/
+
+# IDE / 编辑器
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 日志与临时
+*.log
+tmp/
+temp/
+.cache/
+
+# 调试与分析
+*.pprof
+*.trace
+debug
