@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Power, RefreshCw, Minimize2, Github, BookOpen, Loader2, Save, Check } from 'lucide-react'
 import { GetConfig, SaveConfig } from '../../wailsjs/go/main/App'
+import { BrowserOpenURL } from '../../wailsjs/runtime/runtime'
 import { config } from '../../wailsjs/go/models'
+import { BrowserOpenURL } from '../../wailsjs/runtime/runtime'
 
 interface ToggleProps {
   enabled: boolean
@@ -198,24 +200,20 @@ export default function SettingsPage() {
               快速清理开发垃圾，释放磁盘空间。
             </p>
             <div className="flex gap-3">
-              <a
-                href="https://github.com/newdots002/clearc"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => BrowserOpenURL('https://github.com/newdots002/clearc')}
                 className="flex items-center gap-2 px-4 py-2 bg-bg-hover rounded-lg hover:bg-border transition-colors"
               >
                 <Github size={16} className="text-text-secondary" />
                 <span className="text-text-primary text-sm">GitHub</span>
-              </a>
-              <a
-                href="https://clearc.top"
-                target="_blank"
-                rel="noopener noreferrer"
+              </button>
+              <button
+                onClick={() => BrowserOpenURL('https://clearc.top')}
                 className="flex items-center gap-2 px-4 py-2 bg-bg-hover rounded-lg hover:bg-border transition-colors"
               >
                 <BookOpen size={16} className="text-text-secondary" />
                 <span className="text-text-primary text-sm">官网</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>
