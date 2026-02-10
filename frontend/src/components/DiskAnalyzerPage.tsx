@@ -4,7 +4,7 @@ import {
   Trash2, Loader2, Shield, RefreshCw, AlertTriangle,
   CheckSquare, Square, Filter, Eye, EyeOff, Zap, X
 } from 'lucide-react'
-import { AnalyzeDrive, ExpandNode, DeletePaths, GetAnalyzeProgress, GetAnalyzeStatus, GetWhitelistDirs, SetAnalyzerMinSize, GetAnalyzerMinSize, AnalyzeQuickScan } from '../../wailsjs/go/main/App'
+import { AnalyzeDrive, ExpandNode, DeletePaths, GetAnalyzeProgress, GetAnalyzeStatus, GetWhitelistDirs, SetAnalyzerMinSize, GetAnalyzerMinSize, AnalyzeQuickScan, GetSystemDrive } from '../../wailsjs/go/main/App'
 import { EventsOn, EventsOff } from '../../wailsjs/runtime/runtime'
 
 interface FileNode {
@@ -458,9 +458,11 @@ export default function DiskAnalyzerPage() {
     try {
       // Pass skipSystem = !showSystemDirs (skip system dirs when they are hidden)
       const skipSystem = !showSystemDirs
+      // Get system drive path (C:\ on Windows, / on Linux/macOS)
+      const systemDrive = await GetSystemDrive()
       const result = quickScan 
         ? await AnalyzeQuickScan()
-        : await AnalyzeDrive('C:\\', skipSystem)
+        : await AnalyzeDrive(systemDrive, skipSystem)
       setRootNode(result)
       setIsAnalyzing(false)
       // Auto-expand root
@@ -714,7 +716,7 @@ export default function DiskAnalyzerPage() {
             <div className="flex items-center justify-center h-full text-text-secondary">
               <div className="text-center">
                 <HardDrive size={40} className="mx-auto mb-3 text-text-muted" />
-                <p className="text-sm">点击"开始分析"扫描 C 盘</p>
+                <p className="text-sm">点击"全盘扫描"分析磁盘空间</p>
               </div>
             </div>
           ) : rootNode ? (

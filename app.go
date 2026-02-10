@@ -359,6 +359,11 @@ func (a *App) AnalyzeDrive(drivePath string, skipSystem bool) (*FileNode, error)
 	return convertFileNode(result), nil
 }
 
+// GetSystemDrive returns the system drive path (C:\ on Windows, / on Linux/macOS)
+func (a *App) GetSystemDrive() string {
+	return platform.GetSystemDrive()
+}
+
 // AnalyzeQuickScan performs a quick scan of important directories (Users, caches, etc.)
 func (a *App) AnalyzeQuickScan() (*FileNode, error) {
 	result, err := a.analyzer.QuickScan()

@@ -500,51 +500,104 @@ func (a *Analyzer) QuickScan() (*FileNode, error) {
 	a.setProgress(0)
 	a.setStatus("快速扫描重点目录...")
 
+	// Determine root path based on OS
+	var rootPath string
+	if runtime.GOOS == "windows" {
+		rootPath = "C:\\"
+	} else {
+		rootPath = "/"
+	}
+
 	root := &FileNode{
 		Name:        "重点目录",
-		Path:        "C:\\",
+		Path:        rootPath,
 		IsDir:       true,
 		IsProtected: false,
 		Children:    make([]*FileNode, 0),
 	}
 
-	// Important directories to scan
+	// Important directories to scan (platform-specific)
 	importantDirs := []struct {
 		path        string
 		description string
-	}{
-		{"C:\\Users", "用户数据目录"},
-		{"C:\\Windows\\Temp", "Windows 临时文件"},
-		{"C:\\Windows\\SoftwareDistribution", "Windows 更新缓存"},
-		{"C:\\Windows\\Prefetch", "预读取缓存"},
-		{"C:\\ProgramData\\Package Cache", "程序安装缓存"},
-	}
+	}{}
 
-	// Add user-specific directories
-	userProfile := os.Getenv("USERPROFILE")
-	if userProfile != "" {
+	if runtime.GOOS == "windows" {
+		// Windows-specific directories
+		importantDirs = append(importantDirs,
+			struct{ path, description string }{"C:\\Users", "用户数据目录"},
+			struct{ path, description string }{"C:\\Windows\\Temp", "Windows 临时文件"},
+			struct{ path, description string }{"C:\\Windows\\SoftwareDistribution", "Windows 更新缓存"},
+			struct{ path, description string }{"C:\\Windows\\Prefetch", "预读取缓存"},
+			struct{ path, description string }{"C:\\ProgramData\\Package Cache", "程序安装缓存"},
+		)
+
+		// Add user-specific directories for Windows
+		userProfile := os.Getenv("USERPROFILE")
+		if userProfile != "" {
+			userDirs := []struct {
+				subPath     string
+				description string
+			}{
+				{"AppData\\Local\\Temp", "用户临时文件"},
+				{"AppData\\Local\\Microsoft\\Windows\\INetCache", "IE缓存"},
+				{"AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache", "Chrome缓存"},
+				{"AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Cache", "Edge缓存"},
+				{"AppData\\Roaming\\npm-cache", "npm缓存"},
+				{"AppData\\Local\\yarn\\Cache", "Yarn缓存"},
+				{".gradle", "Gradle缓存"},
+				{".m2", "Maven缓存"},
+				{".nuget", "NuGet缓存"},
+				{"go\\pkg", "Go模块缓存"},
+				{".cargo", "Rust Cargo缓存"},
+				{"Downloads", "下载文件夹"},
+			}
+			for _, ud := range userDirs {
+				importantDirs = append(importantDirs, struct {
+					path        string
+					description string
+				}{filepath.Join(userProfile, ud.subPath), ud.description})
+			}
+		}
+	} else {
+		// Linux/macOS directories
+		userHome := os.Getenv("HOME")
+		if userHome == "" {
+			userHome = "/home"
+		}
+
+		importantDirs = append(importantDirs,
+			struct{ path, description string }{"/tmp", "系统临时文件"},
+			struct{ path, description string }{"/var/tmp", "持久临时文件"},
+			struct{ path, description string }{"/var/log", "系统日志"},
+			struct{ path, description string }{"/var/cache", "系统缓存"},
+			struct{ path, description string }{userHome, "用户主目录"},
+		)
+
+		// Add user-specific directories for Linux/macOS
 		userDirs := []struct {
 			subPath     string
 			description string
 		}{
-			{"AppData\\Local\\Temp", "用户临时文件"},
-			{"AppData\\Local\\Microsoft\\Windows\\INetCache", "IE缓存"},
-			{"AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache", "Chrome缓存"},
-			{"AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Cache", "Edge缓存"},
-			{"AppData\\Roaming\\npm-cache", "npm缓存"},
-			{"AppData\\Local\\yarn\\Cache", "Yarn缓存"},
+			{".cache", "用户缓存"},
+			{".local/share/Trash", "回收站"},
+			{".npm", "npm缓存"},
+			{".yarn", "Yarn缓存"},
 			{".gradle", "Gradle缓存"},
 			{".m2", "Maven缓存"},
-			{".nuget", "NuGet缓存"},
-			{"go\\pkg", "Go模块缓存"},
+			{"go/pkg", "Go模块缓存"},
 			{".cargo", "Rust Cargo缓存"},
+			{".config/google-chrome", "Chrome数据"},
+			{".mozilla/firefox", "Firefox数据"},
 			{"Downloads", "下载文件夹"},
+			{".vscode", "VS Code数据"},
+			{".cursor", "Cursor数据"},
 		}
 		for _, ud := range userDirs {
 			importantDirs = append(importantDirs, struct {
 				path        string
 				description string
-			}{filepath.Join(userProfile, ud.subPath), ud.description})
+			}{filepath.Join(userHome, ud.subPath), ud.description})
 		}
 	}
 
