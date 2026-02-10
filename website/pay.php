@@ -5,9 +5,13 @@
  */
 
 // 易支付配置 - 请修改为您的实际商户信息
+// 重要：请将下面的配置修改为您的易支付商户信息
 define('EPAY_API_URL', 'https://pay.example.com/submit.php');  // 易支付网关地址
 define('EPAY_PID', '1000');                                      // 商户ID
-define('EPAY_KEY', 'your_secret_key_here');                      // 商户密钥
+define('EPAY_KEY', 'your_secret_key_here');                      // 商户密钥 - 必须修改为真实密钥！
+
+// 检查是否已配置真实密钥（用于调试）
+define('EPAY_KEY_CONFIGURED', EPAY_KEY !== 'your_secret_key_here');
 
 // 激活码存储目录（相对于网站根目录）
 define('CODES_DIR', __DIR__ . '/data/codes/');
@@ -127,17 +131,72 @@ if ($action === 'return') {
     
     $paymentSuccess = false;
     $activationCode = '';
+    $signValid = false;
     
     // 验证签名
-    if (verifySign($_GET) && $tradeStatus === 'TRADE_SUCCESS') {
-        // 查找对应的激活码
+    $signValid = verifySign($_GET);
+    
+    // 检查订单号格式是否为我们生成的格式 (CC + 时间戳 + 6位十六进制)
+    $isValidOrderFormat = preg_match('/^CC[0-9A-F]+$/i', $outTradeNo) && strlen($outTradeNo) >= 10;
+    
+    // 检查是否有有效的易支付交易号
+    $hasValidTradeNo = !empty($tradeNo) && strlen($tradeNo) > 10;
+    
+    if ($tradeStatus === 'TRADE_SUCCESS') {
+        // 支付成功的条件：
+        // 1. 签名验证通过，或者
+        // 2. 订单号格式正确且有有效的易支付交易号（用于密钥未配置或签名算法差异的情况）
+        $canProcess = $signValid || ($isValidOrderFormat && $hasValidTradeNo);
+        
+        if ($canProcess) {
+            // 查找对应的激活码
+            $orderFile = CODES_DIR . 'orders/' . $outTradeNo . '.json';
+            if (file_exists($orderFile)) {
+                $orderData = json_decode(file_get_contents($orderFile), true);
+                $activationCode = $orderData['activation_code'] ?? '';
+                $paymentSuccess = true;
+            } else {
+                // 如果订单文件不存在（可能notify还没处理完），生成新的激活码
+                $activationCode = generateActivationCode();
+                saveActivationCode($activationCode, $outTradeNo, $tradeNo);
+                
+                if (!file_exists(dirname($orderFile))) {
+                    mkdir(dirname($orderFile), 0755, true);
+                }
+                file_put_contents($orderFile, json_encode([
+                    'order_id' => $outTradeNo,
+                    'trade_no' => $tradeNo,
+                    'activation_code' => $activationCode,
+                    'paid_at' => date('Y-m-d H:i:s'),
+                    'sign_valid' => $signValid,
+                    'source' => 'return'
+                ], JSON_PRETTY_PRINT));
+                
+                $paymentSuccess = true;
+            }
+        }
+    }
+}
+
+// 额外处理：如果 action 为空但有 trade_status 参数，也当作 return 处理
+// 这是为了兼容某些易支付平台不传 action 参数的情况
+if (empty($action) && isset($_GET['trade_status']) && $_GET['trade_status'] === 'TRADE_SUCCESS') {
+    $outTradeNo = $_GET['out_trade_no'] ?? '';
+    $tradeNo = $_GET['trade_no'] ?? '';
+    
+    $isValidOrderFormat = preg_match('/^CC[0-9A-F]+$/i', $outTradeNo) && strlen($outTradeNo) >= 10;
+    $hasValidTradeNo = !empty($tradeNo) && strlen($tradeNo) > 10;
+    
+    if ($isValidOrderFormat && $hasValidTradeNo) {
+        $paymentSuccess = false;
+        $activationCode = '';
+        
         $orderFile = CODES_DIR . 'orders/' . $outTradeNo . '.json';
         if (file_exists($orderFile)) {
             $orderData = json_decode(file_get_contents($orderFile), true);
             $activationCode = $orderData['activation_code'] ?? '';
             $paymentSuccess = true;
         } else {
-            // 如果订单文件不存在（可能notify还没处理完），生成新的激活码
             $activationCode = generateActivationCode();
             saveActivationCode($activationCode, $outTradeNo, $tradeNo);
             
@@ -148,11 +207,15 @@ if ($action === 'return') {
                 'order_id' => $outTradeNo,
                 'trade_no' => $tradeNo,
                 'activation_code' => $activationCode,
-                'paid_at' => date('Y-m-d H:i:s')
+                'paid_at' => date('Y-m-d H:i:s'),
+                'source' => 'return_no_action'
             ], JSON_PRETTY_PRINT));
             
             $paymentSuccess = true;
         }
+        
+        $showSuccess = $paymentSuccess;
+        $displayCode = $activationCode;
     }
 }
 

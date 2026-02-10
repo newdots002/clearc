@@ -1201,7 +1201,7 @@
               "name": "trayIcon1",
               "width": 16,
               "height": 16,
-              "iconFontName": "search",
+              "iconFontName": "hard-drive",
               "iconFontFamily": "lucide",
               "fill": "$--text-secondary"
             },
@@ -1210,43 +1210,7 @@
               "id": "px5WN",
               "name": "trayText1",
               "fill": "$--text-primary",
-              "content": "快速扫描",
-              "fontFamily": "Inter",
-              "fontSize": 13,
-              "fontWeight": "normal"
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "162iX",
-          "name": "trayItem2",
-          "width": "fill_container",
-          "height": 36,
-          "cornerRadius": 6,
-          "gap": 10,
-          "padding": [
-            0,
-            12
-          ],
-          "alignItems": "center",
-          "children": [
-            {
-              "type": "icon_font",
-              "id": "HmKuJ",
-              "name": "trayIcon2",
-              "width": 16,
-              "height": 16,
-              "iconFontName": "trash-2",
-              "iconFontFamily": "lucide",
-              "fill": "$--text-secondary"
-            },
-            {
-              "type": "text",
-              "id": "Q4LIg",
-              "name": "trayText2",
-              "fill": "$--text-primary",
-              "content": "一键清理",
+              "content": "磁盘分析",
               "fontFamily": "Inter",
               "fontSize": 13,
               "fontWeight": "normal"
@@ -4597,6 +4561,3182 @@
                   ]
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "rJVKT",
+      "x": -120,
+      "y": 2311,
+      "name": "ClearC Landing Page",
+      "width": 1440,
+      "fill": "#0A0F1C",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "uT0Xs",
+          "name": "Header",
+          "width": "fill_container",
+          "height": 80,
+          "padding": [
+            0,
+            80
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "VwIu0",
+              "name": "logoSection",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "6NnGP",
+                  "name": "logoIcon",
+                  "width": 36,
+                  "height": 36,
+                  "fill": "#22D3EE",
+                  "cornerRadius": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "yLCff",
+                      "name": "logoText",
+                      "fill": "#0A0F1C",
+                      "textGrowth": "fixed-width-height",
+                      "width": 36,
+                      "height": 36,
+                      "content": "C",
+                      "textAlign": "center",
+                      "textAlignVertical": "middle",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "5xAqJ",
+                  "name": "logoName",
+                  "fill": "#FFFFFF",
+                  "content": "ClearC",
+                  "fontFamily": "Inter",
+                  "fontSize": 20,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "VWvF1",
+              "name": "navSection",
+              "gap": 40,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "3xqOq",
+                  "name": "navFeatures",
+                  "fill": "#94A3B8",
+                  "content": "Features",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "UOl2V",
+                  "name": "navPricing",
+                  "fill": "#94A3B8",
+                  "content": "Pricing",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "r8Pf0",
+                  "name": "navDocs",
+                  "fill": "#94A3B8",
+                  "content": "Docs",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "ZKN1o",
+                  "name": "navGithub",
+                  "fill": "#94A3B8",
+                  "content": "GitHub",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "6HCS4",
+              "name": "ctaSection",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Gjuig",
+                  "name": "langSwitch",
+                  "fill": "#64748B",
+                  "content": "EN / 中文",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "EdsxS",
+                  "name": "downloadBtn",
+                  "fill": "#22D3EE",
+                  "cornerRadius": 8,
+                  "padding": [
+                    10,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "7POAD",
+                      "name": "downloadText",
+                      "fill": "#0A0F1C",
+                      "content": "Download",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "I8oe9",
+          "name": "Hero Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            100,
+            80,
+            120,
+            80
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "PYddy",
+              "name": "badge",
+              "fill": "#1E293B",
+              "cornerRadius": 100,
+              "gap": 8,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "q7BJ0",
+                  "name": "badgeDot",
+                  "fill": "#22D3EE",
+                  "width": 8,
+                  "height": 8
+                },
+                {
+                  "type": "text",
+                  "id": "FypEk",
+                  "name": "badgeText",
+                  "fill": "#94A3B8",
+                  "content": "v1.0 Released — Cross-platform disk cleaner",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "dH8A7",
+              "name": "headline",
+              "fill": "#FFFFFF",
+              "content": "Clean Your Disk.\nReclaim Your Space.",
+              "lineHeight": 1.1,
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 72,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "py7zz",
+              "name": "subheadline",
+              "fill": "#64748B",
+              "textGrowth": "fixed-width",
+              "width": 700,
+              "content": "ClearC is a powerful cross-platform tool designed for developers.\nQuickly analyze disk usage and clean up development junk files.",
+              "lineHeight": 1.6,
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 20
+            },
+            {
+              "type": "frame",
+              "id": "5nF4L",
+              "name": "ctaRow",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "9cujb",
+                  "name": "primaryCta",
+                  "fill": "#22D3EE",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "padding": [
+                    16,
+                    32
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ZiFLS",
+                      "name": "primaryCtaText",
+                      "fill": "#0A0F1C",
+                      "content": "Download Free",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Z55Wp",
+                  "name": "secondaryCta",
+                  "fill": "#1E293B",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "padding": [
+                    16,
+                    32
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "PBERV",
+                      "name": "secondaryCtaText",
+                      "fill": "#FFFFFF",
+                      "content": "View on GitHub",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Jz2dq",
+              "name": "platformRow",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "FpCYu",
+                  "name": "platformLabel",
+                  "fill": "#475569",
+                  "content": "Available for",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "LZWbg",
+                  "name": "platformWin",
+                  "fill": "#64748B",
+                  "content": "Windows",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "lMjMe",
+                  "name": "platformMac",
+                  "fill": "#64748B",
+                  "content": "macOS",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "gra6a",
+                  "name": "platformLinux",
+                  "fill": "#64748B",
+                  "content": "Linux",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "dfSw0",
+          "name": "Screenshot Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            0,
+            120
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "iwE3m",
+              "name": "screenshotFrame",
+              "width": 1000,
+              "height": 600,
+              "fill": "#1E293B",
+              "cornerRadius": 16,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#22D3EE33"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "id": "zGtq6",
+                  "name": "screenshotPlaceholder",
+                  "fill": "#475569",
+                  "textGrowth": "fixed-width-height",
+                  "width": 1000,
+                  "height": 600,
+                  "content": "Product Screenshot",
+                  "textAlign": "center",
+                  "textAlignVertical": "middle",
+                  "fontFamily": "Inter",
+                  "fontSize": 24,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "IwHId",
+          "name": "Features Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 64,
+          "padding": [
+            100,
+            80
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "3WILb",
+              "name": "featuresHeader",
+              "layout": "vertical",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Q7Pi9",
+                  "name": "featuresLabel",
+                  "fill": "#22D3EE",
+                  "content": "FEATURES",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "UOfMq",
+                  "name": "featuresTitle",
+                  "fill": "#FFFFFF",
+                  "content": "Everything you need to clean your disk",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 48,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "ixvOC",
+                  "name": "featuresSubtitle",
+                  "fill": "#64748B",
+                  "content": "Built for developers who care about disk space",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 18
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "5QbbO",
+              "name": "featuresGrid",
+              "width": "fill_container",
+              "gap": 24,
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "1b1EJ",
+                  "name": "card1",
+                  "width": 380,
+                  "fill": "#1E293B",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 32,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "c80jY",
+                      "name": "card1Icon",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "#22D3EE20",
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "04rCh",
+                          "name": "card1IconText",
+                          "width": 24,
+                          "height": 24,
+                          "iconFontName": "hard-drive",
+                          "iconFontFamily": "lucide",
+                          "fill": "#22D3EE"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "HJBGb",
+                      "name": "card1Title",
+                      "fill": "#FFFFFF",
+                      "content": "Disk Analysis",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "zdfUp",
+                      "name": "card1Desc",
+                      "fill": "#64748B",
+                      "textGrowth": "fixed-width",
+                      "width": 316,
+                      "content": "Visualize disk space usage with an intuitive tree view. Find large files and folders instantly.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "0H3IT",
+                  "name": "card2",
+                  "width": 380,
+                  "fill": "#1E293B",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 32,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "gBWPr",
+                      "name": "card2Icon",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "#22D3EE20",
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "7iTWF",
+                          "name": "card2IconText",
+                          "width": 24,
+                          "height": 24,
+                          "iconFontName": "trash-2",
+                          "iconFontFamily": "lucide",
+                          "fill": "#22D3EE"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "diYIE",
+                      "name": "card2Title",
+                      "fill": "#FFFFFF",
+                      "content": "Smart Cleanup",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "SnJw1",
+                      "name": "card2Desc",
+                      "fill": "#64748B",
+                      "textGrowth": "fixed-width",
+                      "width": 316,
+                      "content": "Automatically detect and clean node_modules, Go cache, Python cache, Rust target, and more.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tZlCr",
+                  "name": "card3",
+                  "width": 380,
+                  "fill": "#1E293B",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 32,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "1pBYe",
+                      "name": "card3Icon",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "#22D3EE20",
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "4vzvx",
+                          "name": "card3IconText",
+                          "width": 24,
+                          "height": 24,
+                          "iconFontName": "shield-check",
+                          "iconFontFamily": "lucide",
+                          "fill": "#22D3EE"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "OhTH6",
+                      "name": "card3Title",
+                      "fill": "#FFFFFF",
+                      "content": "Safe & Protected",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "YgKZu",
+                      "name": "card3Desc",
+                      "fill": "#64748B",
+                      "textGrowth": "fixed-width",
+                      "width": 316,
+                      "content": "System directories are protected by default. Clear recommendations help you make safe decisions.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "m3lYX",
+          "name": "Pricing Section",
+          "width": "fill_container",
+          "fill": "#0F172A",
+          "layout": "vertical",
+          "gap": 64,
+          "padding": [
+            100,
+            80
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "BhCz3",
+              "name": "pricingHeader",
+              "layout": "vertical",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "bFji2",
+                  "name": "pricingLabel",
+                  "fill": "#22D3EE",
+                  "content": "PRICING",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "gXjas",
+                  "name": "pricingTitle",
+                  "fill": "#FFFFFF",
+                  "content": "Simple, transparent pricing",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 48,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "8jZpM",
+                  "name": "pricingSubtitle",
+                  "fill": "#64748B",
+                  "content": "Pay once, use forever. No subscriptions.",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 18
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "1KISV",
+              "name": "pricingCards",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "soN6x",
+                  "name": "freeCard",
+                  "width": 360,
+                  "fill": "#1E293B",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 24,
+                  "padding": 40,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "x5RZJ",
+                      "name": "freeTitle",
+                      "fill": "#FFFFFF",
+                      "content": "Free Trial",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "PBzuP",
+                      "name": "freePrice",
+                      "gap": 4,
+                      "alignItems": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "a3Si3",
+                          "name": "freePriceNum",
+                          "fill": "#FFFFFF",
+                          "content": "¥0",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 48,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "89J8z",
+                          "name": "freePricePeriod",
+                          "fill": "#64748B",
+                          "content": "/ 10 days",
+                          "fontFamily": "Inter",
+                          "fontSize": 16
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "klJFX",
+                      "name": "freeDesc",
+                      "fill": "#64748B",
+                      "content": "Try all features free for 10 days",
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "CkTCp",
+                      "name": "freeFeatures",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "1Y5Rs",
+                          "name": "freeFeat1",
+                          "fill": "#94A3B8",
+                          "content": "✓ Full disk analysis",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "3aEwh",
+                          "name": "freeFeat2",
+                          "fill": "#94A3B8",
+                          "content": "✓ Smart cleanup suggestions",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "j5C2y",
+                          "name": "freeFeat3",
+                          "fill": "#94A3B8",
+                          "content": "✓ Cross-platform support",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "WEykb",
+                      "name": "freeBtn",
+                      "width": "fill_container",
+                      "fill": "#1E293B",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#475569"
+                      },
+                      "padding": [
+                        14,
+                        24
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "vvqeV",
+                          "name": "freeBtnText",
+                          "fill": "#FFFFFF",
+                          "content": "Start Free Trial",
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "NP4Jw",
+                  "name": "vipCard",
+                  "width": 360,
+                  "fill": "#22D3EE",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "#22D3EE"
+                  },
+                  "layout": "vertical",
+                  "gap": 24,
+                  "padding": 40,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "BZGkC",
+                      "name": "vipBadge",
+                      "fill": "#0A0F1C",
+                      "cornerRadius": 100,
+                      "padding": [
+                        6,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "OAqEf",
+                          "name": "vipBadgeText",
+                          "fill": "#22D3EE",
+                          "content": "RECOMMENDED",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 11,
+                          "fontWeight": "700",
+                          "letterSpacing": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "yeRLM",
+                      "name": "vipTitle",
+                      "fill": "#0A0F1C",
+                      "content": "Lifetime VIP",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "fHoBM",
+                      "name": "vipPrice",
+                      "gap": 4,
+                      "alignItems": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "PU8Yj",
+                          "name": "vipPriceNum",
+                          "fill": "#0A0F1C",
+                          "content": "¥5",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 48,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "CRmfd",
+                          "name": "vipPricePeriod",
+                          "fill": "#0A0F1C80",
+                          "content": "/ forever",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "3KzqT",
+                      "name": "vipDesc",
+                      "fill": "#0A0F1C99",
+                      "content": "One-time payment, lifetime access",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "xeECC",
+                      "name": "vipFeatures",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "M75uz",
+                          "name": "vipFeat1",
+                          "fill": "#0A0F1C",
+                          "content": "✓ Everything in Free Trial",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "nAOna",
+                          "name": "vipFeat2",
+                          "fill": "#0A0F1C",
+                          "content": "✓ Unlimited disk analysis",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "NydBq",
+                          "name": "vipFeat3",
+                          "fill": "#0A0F1C",
+                          "content": "✓ Auto background scanning",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "TMOPk",
+                          "name": "vipFeat4",
+                          "fill": "#0A0F1C",
+                          "content": "✓ Priority support",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "i3y7f",
+                          "name": "vipFeat5",
+                          "fill": "#0A0F1C",
+                          "content": "✓ All future updates",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "S8tPV",
+                      "name": "vipBtn",
+                      "width": "fill_container",
+                      "fill": "#0A0F1C",
+                      "cornerRadius": 8,
+                      "padding": [
+                        14,
+                        24
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ol4Yk",
+                          "name": "vipBtnText",
+                          "fill": "#22D3EE",
+                          "content": "Get Lifetime Access",
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "gbc3F",
+          "name": "FAQ Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": [
+            100,
+            200
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "n6wKe",
+              "name": "faqHeader",
+              "layout": "vertical",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Nnrwu",
+                  "name": "faqLabel",
+                  "fill": "#22D3EE",
+                  "content": "FAQ",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "m2JU9",
+                  "name": "faqTitle",
+                  "fill": "#FFFFFF",
+                  "content": "Frequently Asked Questions",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 48,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "m7Hl9",
+              "name": "faqList",
+              "width": 800,
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "M3Hq1",
+                  "name": "faq1",
+                  "width": "fill_container",
+                  "fill": "#1E293B",
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YgVkV",
+                      "name": "faq1Q",
+                      "fill": "#FFFFFF",
+                      "content": "What types of files does ClearC clean?",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MP3Bb",
+                      "name": "faq1A",
+                      "fill": "#64748B",
+                      "textGrowth": "fixed-width",
+                      "width": 752,
+                      "content": "ClearC targets development cache files like node_modules, Go module cache, Python __pycache__, Rust target directories, and other temporary build artifacts.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Z3zJ2",
+                  "name": "faq2",
+                  "width": "fill_container",
+                  "fill": "#1E293B",
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "eKn7o",
+                      "name": "faq2Q",
+                      "fill": "#FFFFFF",
+                      "content": "Is it safe to delete these files?",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Ew4WM",
+                      "name": "faq2A",
+                      "fill": "#64748B",
+                      "textGrowth": "fixed-width",
+                      "width": 752,
+                      "content": "Yes! ClearC only targets regenerable cache and build files. Your source code and important data are protected. You can always rebuild these files when needed.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "unqRB",
+                  "name": "faq3",
+                  "width": "fill_container",
+                  "fill": "#1E293B",
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "dt1Hx",
+                      "name": "faq3Q",
+                      "fill": "#FFFFFF",
+                      "content": "What happens after the 10-day trial?",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Efi8E",
+                      "name": "faq3A",
+                      "fill": "#64748B",
+                      "textGrowth": "fixed-width",
+                      "width": 752,
+                      "content": "After the trial, you can purchase a lifetime VIP license for just ¥5. This is a one-time payment that unlocks all features forever, including future updates.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "06uAW",
+                  "name": "faq4",
+                  "width": "fill_container",
+                  "fill": "#1E293B",
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "DftgP",
+                      "name": "faq4Q",
+                      "fill": "#FFFFFF",
+                      "content": "Does ClearC support all operating systems?",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "TYqwG",
+                      "name": "faq4A",
+                      "fill": "#64748B",
+                      "textGrowth": "fixed-width",
+                      "width": 752,
+                      "content": "Yes! ClearC is built with cross-platform support. It runs natively on Windows, macOS (Intel and Apple Silicon), and Linux.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "lnbvn",
+          "name": "Final CTA Section",
+          "width": "fill_container",
+          "fill": "#0F172A",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            100,
+            80
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "7yzCI",
+              "name": "ctaTitle",
+              "fill": "#FFFFFF",
+              "content": "Ready to reclaim your disk space?",
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 48,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "jcSsC",
+              "name": "ctaSubtitle",
+              "fill": "#64748B",
+              "content": "Download ClearC now and start cleaning in seconds.",
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 18
+            },
+            {
+              "type": "frame",
+              "id": "L5n8i",
+              "name": "ctaButtons",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "QuYcA",
+                  "name": "ctaPrimary",
+                  "fill": "#22D3EE",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "padding": [
+                    16,
+                    32
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jysOy",
+                      "name": "ctaPrimaryText",
+                      "fill": "#0A0F1C",
+                      "content": "Download Free",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "6gCEM",
+                  "name": "ctaSecondary",
+                  "fill": "#1E293B",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "padding": [
+                    16,
+                    32
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "iTPTb",
+                      "name": "ctaSecondaryText",
+                      "fill": "#FFFFFF",
+                      "content": "View Documentation",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "sp0iM",
+          "name": "Footer",
+          "width": "fill_container",
+          "fill": "#0A0F1C",
+          "stroke": {
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#1E293B"
+          },
+          "gap": 80,
+          "padding": [
+            60,
+            80
+          ],
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "eXS15",
+              "name": "footerBrand",
+              "width": 300,
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "P2FyK",
+                  "name": "footerLogo",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "2oDs9",
+                      "name": "footerLogoIcon",
+                      "width": 32,
+                      "height": 32,
+                      "fill": "#22D3EE",
+                      "cornerRadius": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "IS9u9",
+                          "name": "footerLogoText",
+                          "fill": "#0A0F1C",
+                          "textGrowth": "fixed-width-height",
+                          "width": 32,
+                          "height": 32,
+                          "content": "C",
+                          "textAlign": "center",
+                          "textAlignVertical": "middle",
+                          "fontFamily": "Inter",
+                          "fontSize": 18,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "7OqF7",
+                      "name": "footerLogoName",
+                      "fill": "#FFFFFF",
+                      "content": "ClearC",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "aae4V",
+                  "name": "footerTagline",
+                  "fill": "#64748B",
+                  "textGrowth": "fixed-width",
+                  "width": 280,
+                  "content": "A powerful disk cleanup tool for developers. Clean your disk, reclaim your space.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 14
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ANxE4",
+              "name": "footerLinks",
+              "gap": 80,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "0nPBi",
+                  "name": "productCol",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "6RifY",
+                      "name": "productTitle",
+                      "fill": "#FFFFFF",
+                      "content": "Product",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "pzpUn",
+                      "name": "productLink1",
+                      "fill": "#64748B",
+                      "content": "Features",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "IpoXn",
+                      "name": "productLink2",
+                      "fill": "#64748B",
+                      "content": "Pricing",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "qoK5r",
+                      "name": "productLink3",
+                      "fill": "#64748B",
+                      "content": "Download",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "V3YSo",
+                      "name": "productLink4",
+                      "fill": "#64748B",
+                      "content": "Changelog",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "nJArs",
+                  "name": "resourcesCol",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "hpoKT",
+                      "name": "resourcesTitle",
+                      "fill": "#FFFFFF",
+                      "content": "Resources",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "EtYbv",
+                      "name": "resourcesLink1",
+                      "fill": "#64748B",
+                      "content": "Documentation",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "Tx7SU",
+                      "name": "resourcesLink2",
+                      "fill": "#64748B",
+                      "content": "GitHub",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "CgFkj",
+                      "name": "resourcesLink3",
+                      "fill": "#64748B",
+                      "content": "FAQ",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "YGsoc",
+                      "name": "resourcesLink4",
+                      "fill": "#64748B",
+                      "content": "Support",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "5DnhX",
+                  "name": "legalCol",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "i0n77",
+                      "name": "legalTitle",
+                      "fill": "#FFFFFF",
+                      "content": "Legal",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "OSXNH",
+                      "name": "legalLink1",
+                      "fill": "#64748B",
+                      "content": "Privacy Policy",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "7QxvV",
+                      "name": "legalLink2",
+                      "fill": "#64748B",
+                      "content": "Terms of Service",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "d3UB2",
+                      "name": "legalLink3",
+                      "fill": "#64748B",
+                      "content": "License",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "miLDG",
+          "name": "Footer Bottom",
+          "width": "fill_container",
+          "height": 60,
+          "fill": "#0A0F1C",
+          "stroke": {
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#1E293B"
+          },
+          "padding": [
+            0,
+            80
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "KkBiP",
+              "name": "copyright",
+              "fill": "#475569",
+              "content": "© 2026 ClearC. All rights reserved.",
+              "fontFamily": "Inter",
+              "fontSize": 13
+            },
+            {
+              "type": "text",
+              "id": "4fpa9",
+              "name": "langSwitchFooter",
+              "fill": "#64748B",
+              "content": "English / 中文",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "500"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "TQVXg",
+      "x": 1580,
+      "y": 2311,
+      "name": "ClearC 中文版",
+      "width": 1440,
+      "fill": "#0A0F1C",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "LwmPB",
+          "name": "Header CN",
+          "width": "fill_container",
+          "height": 80,
+          "padding": [
+            0,
+            80
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "JH4aY",
+              "name": "logoCn",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "bwtBu",
+                  "name": "logoIconCn",
+                  "width": 36,
+                  "height": 36,
+                  "fill": "#22D3EE",
+                  "cornerRadius": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "vlT4U",
+                      "name": "logoTextCn",
+                      "fill": "#0A0F1C",
+                      "textGrowth": "fixed-width-height",
+                      "width": 36,
+                      "height": 36,
+                      "content": "C",
+                      "textAlign": "center",
+                      "textAlignVertical": "middle",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "bvh2s",
+                  "name": "logoNameCn",
+                  "fill": "#FFFFFF",
+                  "content": "ClearC",
+                  "fontFamily": "Inter",
+                  "fontSize": 20,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "3hnkt",
+              "name": "navCn",
+              "gap": 40,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "pFqfu",
+                  "name": "navFeaturesCn",
+                  "fill": "#94A3B8",
+                  "content": "功能特性",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "wUXgQ",
+                  "name": "navPricingCn",
+                  "fill": "#94A3B8",
+                  "content": "价格",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "g9zll",
+                  "name": "navDocsCn",
+                  "fill": "#94A3B8",
+                  "content": "文档",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "SABZt",
+                  "name": "navGithubCn",
+                  "fill": "#94A3B8",
+                  "content": "GitHub",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "2sL4I",
+              "name": "ctaCn",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "HWMrU",
+                  "name": "langSwitchCn",
+                  "fill": "#64748B",
+                  "content": "EN / 中文",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "cDlwR",
+                  "name": "downloadBtnCn",
+                  "fill": "#22D3EE",
+                  "cornerRadius": 8,
+                  "padding": [
+                    10,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Z58YM",
+                      "name": "downloadTextCn",
+                      "fill": "#0A0F1C",
+                      "content": "立即下载",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "X42bQ",
+          "name": "Hero CN",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            100,
+            80,
+            120,
+            80
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "sY9NK",
+              "name": "badgeCn",
+              "fill": "#1E293B",
+              "cornerRadius": 100,
+              "gap": 8,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "k2TnT",
+                  "name": "badgeDotCn",
+                  "fill": "#22D3EE",
+                  "width": 8,
+                  "height": 8
+                },
+                {
+                  "type": "text",
+                  "id": "TLGoS",
+                  "name": "badgeTextCn",
+                  "fill": "#94A3B8",
+                  "content": "v1.0 发布 — 跨平台磁盘清理工具",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "reBsM",
+              "name": "headlineCn",
+              "fill": "#FFFFFF",
+              "content": "清理磁盘空间\n释放存储潜能",
+              "lineHeight": 1.1,
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 72,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "Vpb33",
+              "name": "subheadlineCn",
+              "fill": "#64748B",
+              "textGrowth": "fixed-width",
+              "width": 700,
+              "content": "ClearC 是一款专为开发者设计的强大跨平台工具\n快速分析磁盘占用，智能清理开发缓存文件",
+              "lineHeight": 1.6,
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 20
+            },
+            {
+              "type": "frame",
+              "id": "FhqT8",
+              "name": "ctaRowCn",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "PcVvX",
+                  "name": "primaryCtaCn",
+                  "fill": "#22D3EE",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "padding": [
+                    16,
+                    32
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "tE1zE",
+                      "name": "primaryCtaTextCn",
+                      "fill": "#0A0F1C",
+                      "content": "免费下载",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sM0eI",
+                  "name": "secondaryCtaCn",
+                  "fill": "#1E293B",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "padding": [
+                    16,
+                    32
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "qKLek",
+                      "name": "secondaryCtaTextCn",
+                      "fill": "#FFFFFF",
+                      "content": "查看 GitHub",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "8wmoK",
+              "name": "platformRowCn",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "fYl6x",
+                  "name": "platformLabelCn",
+                  "fill": "#475569",
+                  "content": "支持平台",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "ldq5g",
+                  "name": "platformWinCn",
+                  "fill": "#64748B",
+                  "content": "Windows",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "sxs0w",
+                  "name": "platformMacCn",
+                  "fill": "#64748B",
+                  "content": "macOS",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "U9K0I",
+                  "name": "platformLinuxCn",
+                  "fill": "#64748B",
+                  "content": "Linux",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "sZAyD",
+          "name": "Screenshot CN",
+          "width": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            0,
+            120
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "xleEO",
+              "name": "screenshotFrameCn",
+              "width": 1000,
+              "height": 600,
+              "fill": "#1E293B",
+              "cornerRadius": 16,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#22D3EE33"
+              },
+              "children": [
+                {
+                  "type": "text",
+                  "id": "tdpy2",
+                  "name": "screenshotPlaceholderCn",
+                  "fill": "#475569",
+                  "textGrowth": "fixed-width-height",
+                  "width": 1000,
+                  "height": 600,
+                  "content": "产品截图",
+                  "textAlign": "center",
+                  "textAlignVertical": "middle",
+                  "fontFamily": "Inter",
+                  "fontSize": 24,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "3H49P",
+          "name": "Features CN",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 64,
+          "padding": [
+            100,
+            80
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "jVkIF",
+              "name": "featuresHeaderCn",
+              "layout": "vertical",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "HoWuE",
+                  "name": "featuresLabelCn",
+                  "fill": "#22D3EE",
+                  "content": "功能特性",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "A7zfA",
+                  "name": "featuresTitleCn",
+                  "fill": "#FFFFFF",
+                  "content": "清理磁盘所需的一切功能",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 48,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "kWEjH",
+                  "name": "featuresSubtitleCn",
+                  "fill": "#64748B",
+                  "content": "专为关注磁盘空间的开发者打造",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 18
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "3OKN4",
+              "name": "featuresGridCn",
+              "width": "fill_container",
+              "gap": 24,
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "t1nCy",
+                  "name": "card1Cn",
+                  "width": 380,
+                  "fill": "#1E293B",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 32,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "A4nUX",
+                      "name": "card1IconCn",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "#22D3EE20",
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "fYpos",
+                          "name": "card1IconImgCn",
+                          "width": 24,
+                          "height": 24,
+                          "iconFontName": "hard-drive",
+                          "iconFontFamily": "lucide",
+                          "fill": "#22D3EE"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "Ftb6c",
+                      "name": "card1TitleCn",
+                      "fill": "#FFFFFF",
+                      "content": "磁盘分析",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "RIGbs",
+                      "name": "card1DescCn",
+                      "fill": "#64748B",
+                      "textGrowth": "fixed-width",
+                      "width": 316,
+                      "content": "通过直观的树状视图可视化磁盘空间占用，快速定位大文件和文件夹。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "LVDS1",
+                  "name": "card2Cn",
+                  "width": 380,
+                  "fill": "#1E293B",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 32,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "aFcHU",
+                      "name": "card2IconCn",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "#22D3EE20",
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "iZvcD",
+                          "name": "card2IconImgCn",
+                          "width": 24,
+                          "height": 24,
+                          "iconFontName": "trash-2",
+                          "iconFontFamily": "lucide",
+                          "fill": "#22D3EE"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "57FBY",
+                      "name": "card2TitleCn",
+                      "fill": "#FFFFFF",
+                      "content": "智能清理",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "fBcEf",
+                      "name": "card2DescCn",
+                      "fill": "#64748B",
+                      "textGrowth": "fixed-width",
+                      "width": 316,
+                      "content": "自动检测并清理 node_modules、Go 缓存、Python 缓存、Rust target 等开发垃圾。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "mS3em",
+                  "name": "card3Cn",
+                  "width": 380,
+                  "fill": "#1E293B",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": 32,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "58nPK",
+                      "name": "card3IconCn",
+                      "width": 48,
+                      "height": 48,
+                      "fill": "#22D3EE20",
+                      "cornerRadius": 12,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "l7L8Q",
+                          "name": "card3IconImgCn",
+                          "width": 24,
+                          "height": 24,
+                          "iconFontName": "shield-check",
+                          "iconFontFamily": "lucide",
+                          "fill": "#22D3EE"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "w3QIG",
+                      "name": "card3TitleCn",
+                      "fill": "#FFFFFF",
+                      "content": "安全保护",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "U8Ell",
+                      "name": "card3DescCn",
+                      "fill": "#64748B",
+                      "textGrowth": "fixed-width",
+                      "width": 316,
+                      "content": "系统目录默认受保护，清晰的建议帮助您做出安全的清理决策。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "nloDY",
+          "name": "Pricing CN",
+          "width": "fill_container",
+          "fill": "#0F172A",
+          "layout": "vertical",
+          "gap": 64,
+          "padding": [
+            100,
+            80
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "QUHQr",
+              "name": "pricingHeaderCn",
+              "layout": "vertical",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "NnIX8",
+                  "name": "pricingLabelCn",
+                  "fill": "#22D3EE",
+                  "content": "价格",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "jS1vO",
+                  "name": "pricingTitleCn",
+                  "fill": "#FFFFFF",
+                  "content": "简单透明的定价",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 48,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "xWnpF",
+                  "name": "pricingSubtitleCn",
+                  "fill": "#64748B",
+                  "content": "一次付费，永久使用。无需订阅。",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 18
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "mXMWL",
+              "name": "pricingCardsCn",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "k5tMA",
+                  "name": "freeCardCn",
+                  "width": 360,
+                  "fill": "#1E293B",
+                  "cornerRadius": 16,
+                  "layout": "vertical",
+                  "gap": 24,
+                  "padding": 40,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "MModj",
+                      "name": "freeTitleCn",
+                      "fill": "#FFFFFF",
+                      "content": "免费试用",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "2rYqU",
+                      "name": "freePriceCn",
+                      "gap": 4,
+                      "alignItems": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "FuYDB",
+                          "name": "freePriceNumCn",
+                          "fill": "#FFFFFF",
+                          "content": "¥0",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 48,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "GXGwK",
+                          "name": "freePricePeriodCn",
+                          "fill": "#64748B",
+                          "content": "/ 10 天",
+                          "fontFamily": "Inter",
+                          "fontSize": 16
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "yonJK",
+                      "name": "freeDescCn",
+                      "fill": "#64748B",
+                      "content": "免费体验全部功能 10 天",
+                      "fontFamily": "Inter",
+                      "fontSize": 15
+                    },
+                    {
+                      "type": "frame",
+                      "id": "KL2mc",
+                      "name": "freeFeaturesCn",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "B1xUl",
+                          "name": "freeFeat1Cn",
+                          "fill": "#94A3B8",
+                          "content": "✓ 完整磁盘分析",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "lt6BN",
+                          "name": "freeFeat2Cn",
+                          "fill": "#94A3B8",
+                          "content": "✓ 智能清理建议",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "tlGR1",
+                          "name": "freeFeat3Cn",
+                          "fill": "#94A3B8",
+                          "content": "✓ 跨平台支持",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "DqThu",
+                      "name": "freeBtnCn",
+                      "width": "fill_container",
+                      "fill": "#1E293B",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#475569"
+                      },
+                      "padding": [
+                        14,
+                        24
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "TTOxZ",
+                          "name": "freeBtnTextCn",
+                          "fill": "#FFFFFF",
+                          "content": "开始免费试用",
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "LRsor",
+                  "name": "vipCardCn",
+                  "width": 360,
+                  "fill": "#22D3EE",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "#22D3EE"
+                  },
+                  "layout": "vertical",
+                  "gap": 24,
+                  "padding": 40,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "kSb6u",
+                      "name": "vipBadgeCn",
+                      "fill": "#0A0F1C",
+                      "cornerRadius": 100,
+                      "padding": [
+                        6,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "bzAHy",
+                          "name": "vipBadgeTextCn",
+                          "fill": "#22D3EE",
+                          "content": "推荐",
+                          "fontFamily": "Inter",
+                          "fontSize": 11,
+                          "fontWeight": "700",
+                          "letterSpacing": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "eDLGl",
+                      "name": "vipTitleCn",
+                      "fill": "#0A0F1C",
+                      "content": "永久 VIP",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "84v5N",
+                      "name": "vipPriceCn",
+                      "gap": 4,
+                      "alignItems": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "CyDsR",
+                          "name": "vipPriceNumCn",
+                          "fill": "#0A0F1C",
+                          "content": "¥5",
+                          "fontFamily": "JetBrains Mono",
+                          "fontSize": 48,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "TzmTz",
+                          "name": "vipPricePeriodCn",
+                          "fill": "#0A0F1C80",
+                          "content": "/ 永久",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "NeQvC",
+                      "name": "vipDescCn",
+                      "fill": "#0A0F1C99",
+                      "content": "一次付款，终身使用",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "KkeMn",
+                      "name": "vipFeaturesCn",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "UOqZY",
+                          "name": "vipFeat1Cn",
+                          "fill": "#0A0F1C",
+                          "content": "✓ 免费试用的所有功能",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ujR2k",
+                          "name": "vipFeat2Cn",
+                          "fill": "#0A0F1C",
+                          "content": "✓ 无限磁盘分析",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "mWqrV",
+                          "name": "vipFeat3Cn",
+                          "fill": "#0A0F1C",
+                          "content": "✓ 后台自动扫描",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "YTR07",
+                          "name": "vipFeat4Cn",
+                          "fill": "#0A0F1C",
+                          "content": "✓ 优先技术支持",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "u8CvV",
+                          "name": "vipFeat5Cn",
+                          "fill": "#0A0F1C",
+                          "content": "✓ 所有未来更新",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "dkJAD",
+                      "name": "vipBtnCn",
+                      "width": "fill_container",
+                      "fill": "#0A0F1C",
+                      "cornerRadius": 8,
+                      "padding": [
+                        14,
+                        24
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "N2VHn",
+                          "name": "vipBtnTextCn",
+                          "fill": "#22D3EE",
+                          "content": "获取永久授权",
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "i4Bzm",
+          "name": "FAQ CN",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": [
+            100,
+            200
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "TGv0K",
+              "name": "faqHeaderCn",
+              "layout": "vertical",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "h1zIz",
+                  "name": "faqLabelCn",
+                  "fill": "#22D3EE",
+                  "content": "常见问题",
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "qBTrd",
+                  "name": "faqTitleCn",
+                  "fill": "#FFFFFF",
+                  "content": "常见问题解答",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 48,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "0F0Qu",
+              "name": "faqListCn",
+              "width": 800,
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "tnX9b",
+                  "name": "faq1Cn",
+                  "width": "fill_container",
+                  "fill": "#1E293B",
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "BAogi",
+                      "name": "faq1QCn",
+                      "fill": "#FFFFFF",
+                      "content": "ClearC 会清理哪些类型的文件？",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "wt5ZR",
+                      "name": "faq1ACn",
+                      "fill": "#64748B",
+                      "textGrowth": "fixed-width",
+                      "width": 752,
+                      "content": "ClearC 主要清理开发缓存文件，如 node_modules、Go 模块缓存、Python __pycache__、Rust target 目录以及其他临时构建产物。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "5WdRJ",
+                  "name": "faq2Cn",
+                  "width": "fill_container",
+                  "fill": "#1E293B",
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ZUMoJ",
+                      "name": "faq2QCn",
+                      "fill": "#FFFFFF",
+                      "content": "删除这些文件安全吗？",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "11P1L",
+                      "name": "faq2ACn",
+                      "fill": "#64748B",
+                      "textGrowth": "fixed-width",
+                      "width": 752,
+                      "content": "完全安全！ClearC 只清理可重新生成的缓存和构建文件。您的源代码和重要数据都受到保护。这些文件在需要时可以随时重新构建。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "FaNyJ",
+                  "name": "faq3Cn",
+                  "width": "fill_container",
+                  "fill": "#1E293B",
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "yefNn",
+                      "name": "faq3QCn",
+                      "fill": "#FFFFFF",
+                      "content": "10 天试用期结束后会怎样？",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "H99fh",
+                      "name": "faq3ACn",
+                      "fill": "#64748B",
+                      "textGrowth": "fixed-width",
+                      "width": 752,
+                      "content": "试用期结束后，您可以仅需 ¥5 购买永久 VIP 授权。这是一次性付款，可永久解锁所有功能，包括未来的更新。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "H42nj",
+                  "name": "faq4Cn",
+                  "width": "fill_container",
+                  "fill": "#1E293B",
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ixz6Q",
+                      "name": "faq4QCn",
+                      "fill": "#FFFFFF",
+                      "content": "ClearC 支持所有操作系统吗？",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "t0ygo",
+                      "name": "faq4ACn",
+                      "fill": "#64748B",
+                      "textGrowth": "fixed-width",
+                      "width": 752,
+                      "content": "是的！ClearC 支持跨平台运行，可在 Windows、macOS（Intel 和 Apple Silicon）以及 Linux 上原生运行。",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "XAgJy",
+          "name": "Final CTA CN",
+          "width": "fill_container",
+          "fill": "#0F172A",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            100,
+            80
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "2AJyB",
+              "name": "ctaTitleCn",
+              "fill": "#FFFFFF",
+              "content": "准备好释放磁盘空间了吗？",
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 48,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "hIBva",
+              "name": "ctaSubtitleCn",
+              "fill": "#64748B",
+              "content": "立即下载 ClearC，几秒钟内开始清理。",
+              "textAlign": "center",
+              "fontFamily": "Inter",
+              "fontSize": 18
+            },
+            {
+              "type": "frame",
+              "id": "gpSSJ",
+              "name": "ctaButtonsCn",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "geUg5",
+                  "name": "ctaPrimaryCn",
+                  "fill": "#22D3EE",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "padding": [
+                    16,
+                    32
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "PlR65",
+                      "name": "ctaPrimaryTextCn",
+                      "fill": "#0A0F1C",
+                      "content": "免费下载",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "CZjbW",
+                  "name": "ctaSecondaryCn",
+                  "fill": "#1E293B",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "padding": [
+                    16,
+                    32
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jcsGS",
+                      "name": "ctaSecondaryTextCn",
+                      "fill": "#FFFFFF",
+                      "content": "查看文档",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ycNCQ",
+          "name": "Footer CN",
+          "width": "fill_container",
+          "fill": "#0A0F1C",
+          "stroke": {
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#1E293B"
+          },
+          "gap": 80,
+          "padding": [
+            60,
+            80
+          ],
+          "justifyContent": "space_between",
+          "children": [
+            {
+              "type": "frame",
+              "id": "6RyRS",
+              "name": "footerBrandCn",
+              "width": 300,
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "2minc",
+                  "name": "footerLogoCn",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Ts8jO",
+                      "name": "footerLogoIconCn",
+                      "width": 32,
+                      "height": 32,
+                      "fill": "#22D3EE",
+                      "cornerRadius": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "iqEwe",
+                          "name": "footerLogoTextCn",
+                          "fill": "#0A0F1C",
+                          "textGrowth": "fixed-width-height",
+                          "width": 32,
+                          "height": 32,
+                          "content": "C",
+                          "textAlign": "center",
+                          "textAlignVertical": "middle",
+                          "fontFamily": "Inter",
+                          "fontSize": 18,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "19LKU",
+                      "name": "footerLogoNameCn",
+                      "fill": "#FFFFFF",
+                      "content": "ClearC",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "AdJoW",
+                  "name": "footerTaglineCn",
+                  "fill": "#64748B",
+                  "textGrowth": "fixed-width",
+                  "width": 280,
+                  "content": "专为开发者打造的强大磁盘清理工具。清理磁盘，释放空间。",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 14
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "9k6e2",
+              "name": "footerLinksCn",
+              "gap": 80,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "4zvwz",
+                  "name": "productColCn",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "OexUt",
+                      "name": "productTitleCn",
+                      "fill": "#FFFFFF",
+                      "content": "产品",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "yYfAU",
+                      "name": "productLink1Cn",
+                      "fill": "#64748B",
+                      "content": "功能特性",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "JRHWh",
+                      "name": "productLink2Cn",
+                      "fill": "#64748B",
+                      "content": "价格",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "m6BxU",
+                      "name": "productLink3Cn",
+                      "fill": "#64748B",
+                      "content": "下载",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "pDwHZ",
+                      "name": "productLink4Cn",
+                      "fill": "#64748B",
+                      "content": "更新日志",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "pgBJI",
+                  "name": "resourcesColCn",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "EdqDI",
+                      "name": "resourcesTitleCn",
+                      "fill": "#FFFFFF",
+                      "content": "资源",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "PqkLh",
+                      "name": "resourcesLink1Cn",
+                      "fill": "#64748B",
+                      "content": "使用文档",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "HNOGs",
+                      "name": "resourcesLink2Cn",
+                      "fill": "#64748B",
+                      "content": "GitHub",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "TJLL4",
+                      "name": "resourcesLink3Cn",
+                      "fill": "#64748B",
+                      "content": "常见问题",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "86059",
+                      "name": "resourcesLink4Cn",
+                      "fill": "#64748B",
+                      "content": "技术支持",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "M4QHo",
+                  "name": "legalColCn",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "s9O80",
+                      "name": "legalTitleCn",
+                      "fill": "#FFFFFF",
+                      "content": "法律",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "R9AuN",
+                      "name": "legalLink1Cn",
+                      "fill": "#64748B",
+                      "content": "隐私政策",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "aRFJ5",
+                      "name": "legalLink2Cn",
+                      "fill": "#64748B",
+                      "content": "服务条款",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    },
+                    {
+                      "type": "text",
+                      "id": "rRk0x",
+                      "name": "legalLink3Cn",
+                      "fill": "#64748B",
+                      "content": "许可证",
+                      "fontFamily": "Inter",
+                      "fontSize": 14
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "EEOge",
+          "name": "Footer Bottom CN",
+          "width": "fill_container",
+          "height": 60,
+          "fill": "#0A0F1C",
+          "stroke": {
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#1E293B"
+          },
+          "padding": [
+            0,
+            80
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "n9iZx",
+              "name": "copyrightCn",
+              "fill": "#475569",
+              "content": "© 2026 ClearC. 保留所有权利。",
+              "fontFamily": "Inter",
+              "fontSize": 13
+            },
+            {
+              "type": "text",
+              "id": "HsGGW",
+              "name": "langSwitchFooterCn",
+              "fill": "#64748B",
+              "content": "English / 中文",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "500"
             }
           ]
         }

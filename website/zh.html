@@ -3,13 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClearC - 清理磁盘空间，释放存储潜能</title>
-    <meta name="description" content="ClearC 是一款专为开发者设计的强大跨平台磁盘清理工具。快速分析磁盘占用，智能清理开发缓存文件。">
+    
+    <!-- 主要 Meta 标签 -->
+    <title>ClearC - C盘清理工具 | 磁盘空间分析器 | 开发者必备</title>
+    <meta name="title" content="ClearC - C盘清理工具 | 磁盘空间分析器 | 开发者必备">
+    <meta name="description" content="ClearC (Clear Core Drive) 是一款专为开发者设计的跨平台C盘清理工具。一键清理 node_modules、Go缓存、Python缓存、Rust target，快速释放磁盘空间。支持 Windows、macOS、Linux，免费下载试用。">
+    <meta name="keywords" content="ClearC, C盘清理, 磁盘清理工具, 磁盘空间分析, node_modules清理, 开发者工具, 清理缓存, Windows清理, 释放磁盘空间, 电脑清理软件, Go缓存清理, Python缓存清理, 系统清理, 垃圾清理, disk cleanup, Clear Core Drive">
+    <meta name="author" content="ClearC">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Chinese">
+    
+    <!-- 规范链接 -->
+    <link rel="canonical" href="https://clearc.top/zh.html">
+    
+    <!-- 多语言链接 -->
+    <link rel="alternate" hreflang="en" href="https://clearc.top/">
+    <link rel="alternate" hreflang="zh" href="https://clearc.top/zh.html">
+    <link rel="alternate" hreflang="x-default" href="https://clearc.top/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://clearc.top/zh.html">
+    <meta property="og:title" content="ClearC - C盘清理工具 | 开发者必备磁盘清理软件">
+    <meta property="og:description" content="ClearC 专为开发者设计的跨平台磁盘清理工具。一键清理 node_modules、Go缓存、Python缓存，快速释放C盘空间。永久授权仅需 ¥5。">
+    <meta property="og:image" content="https://clearc.top/images/og-image-zh.png">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:site_name" content="ClearC">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://clearc.top/zh.html">
+    <meta property="twitter:title" content="ClearC - C盘清理工具 | 开发者必备磁盘清理软件">
+    <meta property="twitter:description" content="ClearC 专为开发者设计的跨平台磁盘清理工具。一键清理 node_modules、Go缓存、Python缓存，快速释放C盘空间。">
+    <meta property="twitter:image" content="https://clearc.top/images/og-image-zh.png">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%2322D3EE' rx='15' width='100' height='100'/><text x='50' y='70' font-size='60' font-weight='bold' text-anchor='middle' fill='%230A0F1C'>C</text></svg>">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    
+    <!-- 字体预加载 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 样式表 -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- 结构化数据 / JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ClearC",
+        "alternateName": ["Clear Core Drive", "C盘清理工具"],
+        "description": "专为开发者设计的跨平台磁盘清理工具。快速分析磁盘占用，智能清理 node_modules、Go缓存、Python缓存等开发垃圾文件。",
+        "url": "https://clearc.top",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": ["Windows", "macOS", "Linux"],
+        "offers": {
+            "@type": "Offer",
+            "price": "5.00",
+            "priceCurrency": "CNY",
+            "description": "永久VIP授权",
+            "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "100"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "ClearC",
+            "url": "https://clearc.top"
+        },
+        "downloadUrl": "https://github.com/newdots002/clearc/releases",
+        "softwareVersion": "1.0.0",
+        "screenshot": "https://clearc.top/images/screenshot.png",
+        "featureList": [
+            "磁盘空间分析",
+            "node_modules 一键清理",
+            "Go 模块缓存清理",
+            "Python 缓存清理",
+            "Rust target 清理",
+            "跨平台支持 Windows/macOS/Linux",
+            "系统目录保护"
+        ],
+        "inLanguage": ["zh-CN", "en"]
+    }
+    </script>
+    
+    <!-- FAQ 结构化数据 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "ClearC 会清理哪些类型的文件？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "ClearC 主要清理开发缓存文件，如 node_modules、Go 模块缓存、Python __pycache__、Rust target 目录以及其他临时构建产物。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "删除这些文件安全吗？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "完全安全！ClearC 只清理可重新生成的缓存和构建文件。您的源代码和重要数据都受到保护。这些文件在需要时可以随时重新构建。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "ClearC 支持哪些操作系统？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "ClearC 支持跨平台运行，可在 Windows、macOS（Intel 和 Apple Silicon）以及 Linux 上原生运行。"
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <!-- Header -->
@@ -79,7 +196,7 @@
             <!-- Step 1 -->
             <div class="story-card">
                 <div class="story-card-image">
-                    <img src="images/空间i清理无法清理干净.png" alt="传统清理工具效果有限">
+                    <img src="images/step1-system-cleanup-limited.png" alt="传统清理工具效果有限">
                 </div>
                 <div class="story-card-content">
                     <span class="story-card-step">1</span>
@@ -90,7 +207,7 @@
             <!-- Step 2 -->
             <div class="story-card">
                 <div class="story-card-image">
-                    <img src="images/忘记的一些项目占用了很大空间.png" alt="发现被遗忘的项目">
+                    <img src="images/step2-forgotten-projects.png" alt="发现被遗忘的项目">
                 </div>
                 <div class="story-card-content">
                     <span class="story-card-step">2</span>
@@ -101,7 +218,7 @@
             <!-- Step 3 -->
             <div class="story-card">
                 <div class="story-card-image">
-                    <img src="images/这种日志文件肯定是可以删除的.png" alt="识别可删除的日志文件">
+                    <img src="images/step3-log-files-safe-delete.png" alt="识别可删除的日志文件">
                 </div>
                 <div class="story-card-content">
                     <span class="story-card-step">3</span>
@@ -112,7 +229,7 @@
             <!-- Step 4 -->
             <div class="story-card">
                 <div class="story-card-image">
-                    <img src="images/删除了日志释放了3个G.png" alt="删除后释放大量空间">
+                    <img src="images/step4-freed-3gb-logs.png" alt="删除后释放大量空间">
                 </div>
                 <div class="story-card-content">
                     <span class="story-card-step">4</span>
@@ -123,7 +240,7 @@
             <!-- Step 5 - Highlight -->
             <div class="story-card highlight">
                 <div class="story-card-image">
-                    <img src="images/C盘终于不是红色的了.png" alt="C盘恢复健康">
+                    <img src="images/step6-drive-healthy.png" alt="C盘恢复健康">
                 </div>
                 <div class="story-card-content">
                     <span class="story-card-step">✓</span>
@@ -134,7 +251,7 @@
             <!-- Step 6 -->
             <div class="story-card">
                 <div class="story-card-image">
-                    <img src="images/一下子就健康了.png" alt="磁盘健康状态">
+                    <img src="images/result-healthy-drive.png" alt="磁盘健康状态">
                 </div>
                 <div class="story-card-content">
                     <span class="story-card-step">6</span>

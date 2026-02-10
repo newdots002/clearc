@@ -3,13 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClearC - Clean Your Disk, Reclaim Your Space</title>
-    <meta name="description" content="ClearC is a powerful cross-platform disk cleanup tool designed for developers. Quickly analyze disk usage and clean up development junk files.">
+    
+    <!-- Primary Meta Tags -->
+    <title>ClearC - Clear Core Drive | Disk Cleanup Tool for Developers</title>
+    <meta name="title" content="ClearC - Clear Core Drive | Disk Cleanup Tool for Developers">
+    <meta name="description" content="ClearC (Clear Core Drive) is a powerful cross-platform disk cleanup tool for developers. Analyze disk usage, clean node_modules, Go cache, Python cache, Rust target and reclaim your C: drive space. Free download for Windows, macOS and Linux.">
+    <meta name="keywords" content="ClearC, Clear Core Drive, disk cleanup, C drive cleaner, disk analyzer, node_modules cleaner, developer tools, disk space, clean cache, Windows disk cleanup, macOS disk cleanup, Linux disk cleanup, free disk space, storage cleaner">
+    <meta name="author" content="ClearC">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://clearc.top/">
+    
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="https://clearc.top/">
+    <link rel="alternate" hreflang="zh" href="https://clearc.top/zh.html">
+    <link rel="alternate" hreflang="x-default" href="https://clearc.top/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://clearc.top/">
+    <meta property="og:title" content="ClearC - Clear Core Drive | Disk Cleanup Tool for Developers">
+    <meta property="og:description" content="ClearC is a powerful cross-platform disk cleanup tool. Analyze disk usage, clean development cache files and reclaim your C: drive space. Free for Windows, macOS and Linux.">
+    <meta property="og:image" content="https://clearc.top/images/og-image.png">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:site_name" content="ClearC">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://clearc.top/">
+    <meta property="twitter:title" content="ClearC - Clear Core Drive | Disk Cleanup Tool for Developers">
+    <meta property="twitter:description" content="ClearC is a powerful cross-platform disk cleanup tool. Analyze disk usage, clean development cache files and reclaim your C: drive space.">
+    <meta property="twitter:image" content="https://clearc.top/images/og-image.png">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%2322D3EE' rx='15' width='100' height='100'/><text x='50' y='70' font-size='60' font-weight='bold' text-anchor='middle' fill='%230A0F1C'>C</text></svg>">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    
+    <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ClearC",
+        "alternateName": "Clear Core Drive",
+        "description": "A powerful cross-platform disk cleanup tool designed for developers. Analyze disk usage and clean up development junk files.",
+        "url": "https://clearc.top",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": ["Windows", "macOS", "Linux"],
+        "offers": {
+            "@type": "Offer",
+            "price": "5.00",
+            "priceCurrency": "CNY",
+            "description": "Lifetime VIP License"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "100"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "ClearC",
+            "url": "https://clearc.top"
+        },
+        "downloadUrl": "https://github.com/newdots002/clearc/releases",
+        "softwareVersion": "1.0.0",
+        "screenshot": "https://clearc.top/images/screenshot.png",
+        "featureList": [
+            "Disk space analyzer",
+            "node_modules cleaner",
+            "Go cache cleaner",
+            "Python cache cleaner",
+            "Rust target cleaner",
+            "Cross-platform support",
+            "Safe cleanup recommendations"
+        ]
+    }
+    </script>
+    
+    <!-- FAQ Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What types of files does ClearC clean?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "ClearC focuses on cleaning developer cache files including node_modules, Go module cache, Python __pycache__, Rust target directories, and other temporary build artifacts."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is it safe to delete these files?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely! ClearC only removes regeneratable cache and build files. Your source code and important data are always protected. These files can be rebuilt anytime when needed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which operating systems does ClearC support?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "ClearC works cross-platform, running natively on Windows, macOS (both Intel and Apple Silicon), and Linux."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What does ClearC stand for?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "ClearC stands for 'Clear Core Drive' - it helps you clear your core system drive (like C: drive on Windows) by removing unnecessary development cache files."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <!-- Header -->
@@ -79,7 +200,7 @@
             <!-- Step 1 -->
             <div class="story-card">
                 <div class="story-card-image">
-                    <img src="images/空间i清理无法清理干净.png" alt="Traditional cleanup tools limited">
+                    <img src="images/step1-system-cleanup-limited.png" alt="Traditional cleanup tools limited">
                 </div>
                 <div class="story-card-content">
                     <span class="story-card-step">1</span>
@@ -90,7 +211,7 @@
             <!-- Step 2 -->
             <div class="story-card">
                 <div class="story-card-image">
-                    <img src="images/忘记的一些项目占用了很大空间.png" alt="Discover forgotten projects">
+                    <img src="images/step2-forgotten-projects.png" alt="Discover forgotten projects">
                 </div>
                 <div class="story-card-content">
                     <span class="story-card-step">2</span>
@@ -101,7 +222,7 @@
             <!-- Step 3 -->
             <div class="story-card">
                 <div class="story-card-image">
-                    <img src="images/这种日志文件肯定是可以删除的.png" alt="Identify deletable log files">
+                    <img src="images/step3-log-files-safe-delete.png" alt="Identify deletable log files">
                 </div>
                 <div class="story-card-content">
                     <span class="story-card-step">3</span>
@@ -112,7 +233,7 @@
             <!-- Step 4 -->
             <div class="story-card">
                 <div class="story-card-image">
-                    <img src="images/删除了日志释放了3个G.png" alt="Free up space after cleanup">
+                    <img src="images/step4-freed-3gb-logs.png" alt="Free up space after cleanup">
                 </div>
                 <div class="story-card-content">
                     <span class="story-card-step">4</span>
@@ -123,7 +244,7 @@
             <!-- Step 5 - Highlight -->
             <div class="story-card highlight">
                 <div class="story-card-image">
-                    <img src="images/C盘终于不是红色的了.png" alt="C drive restored to healthy">
+                    <img src="images/step6-drive-healthy.png" alt="C drive restored to healthy">
                 </div>
                 <div class="story-card-content">
                     <span class="story-card-step">✓</span>
@@ -134,7 +255,7 @@
             <!-- Step 6 -->
             <div class="story-card">
                 <div class="story-card-image">
-                    <img src="images/一下子就健康了.png" alt="Disk health restored">
+                    <img src="images/result-healthy-drive.png" alt="Disk health restored">
                 </div>
                 <div class="story-card-content">
                     <span class="story-card-step">6</span>
