@@ -639,7 +639,8 @@ export default function DiskAnalyzerPage() {
             <select
               value={minSizeMB}
               onChange={(e) => handleMinSizeChange(Number(e.target.value))}
-              className="bg-bg-secondary border border-border rounded px-1.5 py-1 text-xs text-text-primary focus:outline-none focus:border-accent-blue"
+              className="bg-bg-secondary border border-border rounded px-1.5 py-1 text-xs text-text-primary focus:outline-none focus:border-accent-blue [&>option]:bg-bg-secondary [&>option]:text-text-primary"
+              style={{ colorScheme: 'dark' }}
             >
               <option value={0}>全部</option>
               <option value={50}>50MB</option>

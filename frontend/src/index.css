@@ -39,3 +39,13 @@ body {
   user-select: none;
   -webkit-user-select: none;
 }
+
+/* Fix select dropdown styling for dark mode on Linux/GTK */
+select {
+  color-scheme: dark;
+}
+
+select option {
+  background-color: #1A1A1A;
+  color: #FFFFFF;
+}
