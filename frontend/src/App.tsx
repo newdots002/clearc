@@ -32,6 +32,13 @@ function App() {
     }
   }, [])
 
+  // 启动时检查试用期是否过期，如果过期则显示弹窗
+  useEffect(() => {
+    if (vipStatus && !vipStatus.isVip && vipStatus.isTrialExpired) {
+      setShowVIPModal(true)
+    }
+  }, [vipStatus])
+
   const loadVIPStatus = async () => {
     try {
       const status = await GetVIPStatus()

@@ -26,15 +26,15 @@ const ActivationServerURL = "https://clearc.top/check.php"
 
 // App struct
 type App struct {
-	ctx                context.Context
-	scanner            *scanner.Scanner
-	cleaner            *cleaner.Cleaner
-	config             *config.Config
-	analyzer           *analyzer.Analyzer
-	autoAnalyzeStop    chan struct{}
-	autoAnalyzeMutex   sync.Mutex
-	lastAnalyzeTime    time.Time
-	isAutoAnalyzing    bool
+	ctx              context.Context
+	scanner          *scanner.Scanner
+	cleaner          *cleaner.Cleaner
+	config           *config.Config
+	analyzer         *analyzer.Analyzer
+	autoAnalyzeStop  chan struct{}
+	autoAnalyzeMutex sync.Mutex
+	lastAnalyzeTime  time.Time
+	isAutoAnalyzing  bool
 }
 
 // NewApp creates a new App application struct
@@ -51,7 +51,7 @@ func NewApp() *App {
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 	a.config.Load()
-	
+
 	// 启动自动分析（如果已开启）
 	if a.config.AutoAnalyze {
 		a.startAutoAnalyze()
@@ -69,13 +69,13 @@ func (a *App) shutdown(ctx context.Context) {
 func (a *App) startAutoAnalyze() {
 	a.autoAnalyzeMutex.Lock()
 	defer a.autoAnalyzeMutex.Unlock()
-	
+
 	if a.autoAnalyzeStop != nil {
 		return // 已经在运行
 	}
-	
+
 	a.autoAnalyzeStop = make(chan struct{})
-	
+
 	go func() {
 		// 首次启动延迟5分钟再开始
 		initialDelay := time.NewTimer(5 * time.Minute)
@@ -85,19 +85,19 @@ func (a *App) startAutoAnalyze() {
 			initialDelay.Stop()
 			return
 		}
-		
+
 		for {
 			// 检查距离上次分析的时间
 			interval := time.Duration(a.config.AutoAnalyzeInterval) * time.Minute
 			if interval < 30*time.Minute {
 				interval = 30 * time.Minute // 最小30分钟
 			}
-			
+
 			timeSinceLastAnalyze := time.Since(a.lastAnalyzeTime)
 			if timeSinceLastAnalyze >= interval {
 				a.runBackgroundAnalyze()
 			}
-			
+
 			// 每10分钟检查一次
 			checkTimer := time.NewTimer(10 * time.Minute)
 			select {
@@ -115,7 +115,7 @@ func (a *App) startAutoAnalyze() {
 func (a *App) stopAutoAnalyze() {
 	a.autoAnalyzeMutex.Lock()
 	defer a.autoAnalyzeMutex.Unlock()
-	
+
 	if a.autoAnalyzeStop != nil {
 		close(a.autoAnalyzeStop)
 		a.autoAnalyzeStop = nil
@@ -127,22 +127,22 @@ func (a *App) runBackgroundAnalyze() {
 	if a.isAutoAnalyzing {
 		return
 	}
-	
+
 	a.isAutoAnalyzing = true
 	defer func() {
 		a.isAutoAnalyzing = false
 		a.lastAnalyzeTime = time.Now()
 	}()
-	
+
 	// 静默执行快速扫描，只更新缓存
 	result, err := a.analyzer.QuickScan()
 	if err != nil {
 		return
 	}
-	
+
 	// 计算大小并更新缓存（静默，不发送事件到前端）
 	a.analyzer.CalculateSizesAsync(result.Children, false, nil)
-	
+
 	// 通知前端缓存已更新（可选）
 	if a.ctx != nil {
 		runtime.EventsEmit(a.ctx, "backgroundAnalyzeComplete", map[string]interface{}{
@@ -300,14 +300,14 @@ func (a *App) GetConfig() *config.Config {
 func (a *App) SaveConfig(cfg *config.Config) error {
 	oldAutoAnalyze := a.config.AutoAnalyze
 	a.config = cfg
-	
+
 	// 处理自动分析设置变化
 	if cfg.AutoAnalyze && !oldAutoAnalyze {
 		a.startAutoAnalyze()
 	} else if !cfg.AutoAnalyze && oldAutoAnalyze {
 		a.stopAutoAnalyze()
 	}
-	
+
 	return a.config.Save()
 }
 
@@ -495,22 +495,22 @@ type VIPStatus struct {
 // GetVIPStatus returns the current VIP status
 func (a *App) GetVIPStatus() *VIPStatus {
 	now := time.Now().Unix()
-	
+
 	// 如果是首次使用，记录时间
 	if a.config.FirstUseTime == 0 {
 		a.config.FirstUseTime = now
 		a.config.Save()
 	}
-	
+
 	// 计算试用剩余天数
 	daysSinceFirstUse := int((now - a.config.FirstUseTime) / 86400)
 	trialDaysLeft := a.config.TrialDays - daysSinceFirstUse
 	if trialDaysLeft < 0 {
 		trialDaysLeft = 0
 	}
-	
+
 	isTrialExpired := !a.config.IsVIP && daysSinceFirstUse >= a.config.TrialDays
-	
+
 	return &VIPStatus{
 		IsVIP:          a.config.IsVIP,
 		IsTrialExpired: isTrialExpired,
@@ -536,22 +536,24 @@ type ActivationResult struct {
 // ValidateActivationCode validates the format of an activation code
 func (a *App) ValidateActivationCode(code string) bool {
 	// 激活码格式: XXXX-XXXX-XXXX-XXXX (16位字母数字，用-分隔)
+	// 总长度 19 字符 (16个字母数字 + 3个连字符)
 	if len(code) != 19 {
 		return false
 	}
-	
-	// 检查格式
+
+	// 检查格式：位置 4, 9, 14 应该是连字符
+	if code[4] != '-' || code[9] != '-' || code[14] != '-' {
+		return false
+	}
+
+	// 检查其他位置是否为大写字母或数字
 	for i, c := range code {
 		if i == 4 || i == 9 || i == 14 {
-			if c != '-' {
-				return false
-			}
-		} else {
-			// 允许大写字母和数字（排除容易混淆的字符 O, I, L, 0, 1）
-			if !((c >= 'A' && c <= 'Z' && c != 'O' && c != 'I' && c != 'L') ||
-				(c >= '2' && c <= '9')) {
-				return false
-			}
+			continue // 跳过连字符位置
+		}
+		// 允许大写字母 A-Z 和数字 0-9
+		if !((c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')) {
+			return false
 		}
 	}
 	return true
@@ -579,36 +581,36 @@ func (a *App) getDeviceID() string {
 // verifyActivationCodeOnline verifies the activation code with the server
 func (a *App) verifyActivationCodeOnline(code string, action string) (*ServerVerifyResponse, error) {
 	deviceID := a.getDeviceID()
-	
+
 	// 构建请求URL
 	params := url.Values{}
 	params.Set("action", action)
 	params.Set("code", code)
 	params.Set("device_id", deviceID)
-	
+
 	reqURL := ActivationServerURL + "?" + params.Encode()
-	
+
 	// 设置超时
 	client := &http.Client{
 		Timeout: 10 * time.Second,
 	}
-	
+
 	resp, err := client.Get(reqURL)
 	if err != nil {
 		return nil, fmt.Errorf("网络请求失败: %v", err)
 	}
 	defer resp.Body.Close()
-	
+
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, fmt.Errorf("读取响应失败: %v", err)
 	}
-	
+
 	var result ServerVerifyResponse
 	if err := json.Unmarshal(body, &result); err != nil {
 		return nil, fmt.Errorf("解析响应失败: %v", err)
 	}
-	
+
 	return &result, nil
 }
 
@@ -621,7 +623,7 @@ func (a *App) ActivateVIP(activationCode string) *ActivationResult {
 			Message: "激活码格式无效，请检查后重试",
 		}
 	}
-	
+
 	// 检查是否已经是VIP（且使用的是同一个激活码）
 	if a.config.IsVIP && a.config.ActivationCode == activationCode {
 		return &ActivationResult{
@@ -629,7 +631,7 @@ func (a *App) ActivateVIP(activationCode string) *ActivationResult {
 			Message: "您已经是永久VIP用户",
 		}
 	}
-	
+
 	// 在线验证并激活激活码
 	verifyResult, err := a.verifyActivationCodeOnline(activationCode, "activate")
 	if err != nil {
@@ -648,26 +650,26 @@ func (a *App) ActivateVIP(activationCode string) *ActivationResult {
 			Message: fmt.Sprintf("验证失败：%v", err),
 		}
 	}
-	
+
 	if !verifyResult.Success {
 		return &ActivationResult{
 			Success: false,
 			Message: verifyResult.Message,
 		}
 	}
-	
+
 	// 激活成功，保存到本地配置
 	a.config.IsVIP = true
 	a.config.VIPActivatedAt = time.Now().Unix()
 	a.config.ActivationCode = activationCode
-	
+
 	if err := a.config.Save(); err != nil {
 		return &ActivationResult{
 			Success: false,
 			Message: "保存配置失败，请重试",
 		}
 	}
-	
+
 	return &ActivationResult{
 		Success: true,
 		Message: "恭喜！您已成功激活永久VIP",
@@ -682,7 +684,7 @@ func (a *App) VerifyActivationCode(code string) *ActivationResult {
 			Message: "激活码格式无效",
 		}
 	}
-	
+
 	result, err := a.verifyActivationCodeOnline(code, "verify")
 	if err != nil {
 		return &ActivationResult{
@@ -690,7 +692,7 @@ func (a *App) VerifyActivationCode(code string) *ActivationResult {
 			Message: fmt.Sprintf("验证失败：%v", err),
 		}
 	}
-	
+
 	return &ActivationResult{
 		Success: result.Success,
 		Message: result.Message,

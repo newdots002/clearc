@@ -3,13 +3,19 @@
 import {main} from '../models';
 import {config} from '../models';
 
+export function ActivateVIP(arg1:string):Promise<main.ActivationResult>;
+
 export function AnalyzeDrive(arg1:string,arg2:boolean):Promise<main.FileNode>;
 
 export function AnalyzeQuickScan():Promise<main.FileNode>;
 
+export function CheckTrialStatus():Promise<boolean>;
+
 export function CleanCategories(arg1:Array<string>):Promise<main.CleanResult>;
 
 export function ClearAnalyzerCache():Promise<void>;
+
+export function DeactivateVIP():Promise<void>;
 
 export function DeleteFiles(arg1:Array<string>):Promise<main.CleanResult>;
 
@@ -29,13 +35,21 @@ export function GetConfig():Promise<config.Config>;
 
 export function GetDiskUsage():Promise<main.DiskUsage>;
 
+export function GetLastAnalyzeTime():Promise<number>;
+
 export function GetScanProgress():Promise<number>;
 
 export function GetScanStatus():Promise<string>;
 
 export function GetUnusedFiles(arg1:number,arg2:number):Promise<Array<main.UnusedFile>>;
 
+export function GetVIPStatus():Promise<main.VIPStatus>;
+
 export function GetWhitelistDirs():Promise<Array<string>>;
+
+export function IsAutoAnalyzing():Promise<boolean>;
+
+export function ResetTrial():Promise<void>;
 
 export function SaveConfig(arg1:config.Config):Promise<void>;
 
@@ -43,16 +57,6 @@ export function ScanForJunk():Promise<main.ScanResult>;
 
 export function SetAnalyzerMinSize(arg1:number):Promise<void>;
 
-export function GetVIPStatus():Promise<main.VIPStatus>;
-
-export function CheckTrialStatus():Promise<boolean>;
-
-export function ActivateVIP(arg1:string):Promise<main.ActivationResult>;
-
-export function VerifyActivationCode(arg1:string):Promise<main.ActivationResult>;
-
 export function ValidateActivationCode(arg1:string):Promise<boolean>;
 
-export function DeactivateVIP():Promise<void>;
-
-export function ResetTrial():Promise<void>;
+export function VerifyActivationCode(arg1:string):Promise<main.ActivationResult>;

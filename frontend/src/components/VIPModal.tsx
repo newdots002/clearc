@@ -15,7 +15,9 @@ interface ActivationResult {
   message: string
 }
 
-export default function VIPModal({ isOpen, onClose, onUpgrade, trialDaysLeft }: VIPModalProps) {
+export default function VIPModal({ isOpen, onClose, onUpgrade: _onUpgrade, trialDaysLeft }: VIPModalProps) {
+  // Note: onUpgrade is kept for API compatibility but currently unused
+  void _onUpgrade
   const [showActivation, setShowActivation] = useState(false)
   const [activationCode, setActivationCode] = useState('')
   const [isActivating, setIsActivating] = useState(false)
@@ -158,14 +160,12 @@ export default function VIPModal({ isOpen, onClose, onUpgrade, trialDaysLeft }: 
                 >
                   已有激活码？点击激活
                 </button>
-                {!isExpired && (
-                  <button
-                    onClick={handleClose}
-                    className="w-full py-2 text-text-muted text-sm hover:text-text-secondary transition-colors"
-                  >
-                    继续试用
-                  </button>
-                )}
+                <button
+                  onClick={handleClose}
+                  className="w-full py-2 text-text-muted text-sm hover:text-text-secondary transition-colors"
+                >
+                  {isExpired ? '稍后再说' : '继续试用'}
+                </button>
               </div>
             </>
           ) : (

@@ -21,6 +21,7 @@ export namespace config {
 	    vipActivatedAt: number;
 	    firstUseTime: number;
 	    trialDays: number;
+	    activationCode: string;
 	
 	    static createFrom(source: any = {}) {
 	        return new Config(source);
@@ -48,6 +49,7 @@ export namespace config {
 	        this.vipActivatedAt = source["vipActivatedAt"];
 	        this.firstUseTime = source["firstUseTime"];
 	        this.trialDays = source["trialDays"];
+	        this.activationCode = source["activationCode"];
 	    }
 	}
 
@@ -55,6 +57,20 @@ export namespace config {
 
 export namespace main {
 	
+	export class ActivationResult {
+	    success: boolean;
+	    message: string;
+	
+	    static createFrom(source: any = {}) {
+	        return new ActivationResult(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.success = source["success"];
+	        this.message = source["message"];
+	    }
+	}
 	export class CategoryResult {
 	    id: string;
 	    name: string;
@@ -226,11 +242,11 @@ export namespace main {
 	    trialDays: number;
 	    firstUseTime: number;
 	    vipActivatedAt: number;
-
+	
 	    static createFrom(source: any = {}) {
 	        return new VIPStatus(source);
 	    }
-
+	
 	    constructor(source: any = {}) {
 	        if ('string' === typeof source) source = JSON.parse(source);
 	        this.isVip = source["isVip"];
@@ -239,20 +255,6 @@ export namespace main {
 	        this.trialDays = source["trialDays"];
 	        this.firstUseTime = source["firstUseTime"];
 	        this.vipActivatedAt = source["vipActivatedAt"];
-	    }
-	}
-	export class ActivationResult {
-	    success: boolean;
-	    message: string;
-
-	    static createFrom(source: any = {}) {
-	        return new ActivationResult(source);
-	    }
-
-	    constructor(source: any = {}) {
-	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.success = source["success"];
-	        this.message = source["message"];
 	    }
 	}
 
