@@ -46,3 +46,6 @@ temp/
 *.pprof
 *.trace
 debug
+
+# 发行版输出
+dist/
