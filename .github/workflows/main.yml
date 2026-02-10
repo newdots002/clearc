@@ -146,76 +146,11 @@ jobs:
           cd build/bin
           tar -czvf "../../ClearC-$version-linux-amd64.tar.gz" *
 
-      - name: Create AppImage
-        run: |
-          version="${{ steps.version.outputs.VERSION }}"
-          
-          # Download linuxdeploy and AppImage plugin
-          wget -q https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
-          wget -q https://github.com/linuxdeploy/linuxdeploy-plugin-gtk/releases/download/continuous/linuxdeploy-plugin-gtk-x86_64.AppImage
-          chmod +x linuxdeploy*.AppImage
-          
-          # Create AppDir structure
-          mkdir -p AppDir/usr/bin
-          mkdir -p AppDir/usr/share/applications
-          mkdir -p AppDir/usr/share/icons/hicolor/256x256/apps
-          
-          # Copy binary
-          cp build/bin/ClearC AppDir/usr/bin/
-          chmod +x AppDir/usr/bin/ClearC
-          
-          # Create desktop file (no leading spaces!)
-          cat > AppDir/usr/share/applications/clearc.desktop << 'EOF'
-[Desktop Entry]
-Name=ClearC
-Comment=Clean Your Disk, Reclaim Your Space
-Exec=ClearC
-Icon=clearc
-Type=Application
-Categories=Utility;System;
-Terminal=false
-EOF
-          
-          # Create icon (simple SVG converted to PNG)
-          cat > /tmp/clearc.svg << 'EOF'
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-  <rect fill="#22D3EE" rx="40" width="256" height="256"/>
-  <text x="128" y="180" font-size="160" font-weight="bold" text-anchor="middle" fill="#0A0F1C">C</text>
-</svg>
-EOF
-          
-          # Convert SVG to PNG (using rsvg-convert or ImageMagick)
-          sudo apt-get install -y librsvg2-bin
-          rsvg-convert -w 256 -h 256 /tmp/clearc.svg -o AppDir/usr/share/icons/hicolor/256x256/apps/clearc.png
-          
-          # Copy desktop file and icon to AppDir root (required by linuxdeploy)
-          cp AppDir/usr/share/applications/clearc.desktop AppDir/
-          cp AppDir/usr/share/icons/hicolor/256x256/apps/clearc.png AppDir/
-          
-          # Create AppImage
-          export DEPLOY_GTK_VERSION=3
-          ./linuxdeploy-x86_64.AppImage --appdir AppDir --plugin gtk --output appimage || true
-          
-          # Find and rename AppImage (handle different naming patterns)
-          echo "Looking for AppImage files..."
-          ls -la *.AppImage 2>/dev/null || echo "No AppImage files found with .AppImage extension"
-          ls -la *appimage* 2>/dev/null || echo "No appimage files found"
-          
-          # Try to find any generated AppImage
-          APPIMAGE_FILE=$(find . -maxdepth 1 -name "*.AppImage" -o -name "*-x86_64.AppImage" 2>/dev/null | grep -v linuxdeploy | head -1)
-          if [ -n "$APPIMAGE_FILE" ] && [ -f "$APPIMAGE_FILE" ]; then
-            mv "$APPIMAGE_FILE" "ClearC-$version-linux-amd64.AppImage"
-            echo "AppImage created successfully: ClearC-$version-linux-amd64.AppImage"
-          else
-            echo "Warning: AppImage was not created, skipping..."
-          fi
-
       - name: Upload Linux artifacts
         uses: actions/upload-artifact@v4
         with:
           name: linux-amd64
-          path: ClearC-*-linux-amd64.*
-          if-no-files-found: warn
+          path: ClearC-*-linux-amd64.tar.gz
 
   release:
     needs: [build-windows, build-macos, build-linux]
@@ -251,29 +186,29 @@ EOF
             | **Windows** | `ClearC-${{ steps.version.outputs.VERSION }}-windows-amd64.zip` | 解压后运行 |
             | **macOS (Intel)** | `ClearC-${{ steps.version.outputs.VERSION }}-macos-amd64.zip` | 解压后拖入应用程序 |
             | **macOS (Apple Silicon)** | `ClearC-${{ steps.version.outputs.VERSION }}-macos-arm64.zip` | 解压后拖入应用程序 |
-            | **Linux (AppImage)** | `ClearC-${{ steps.version.outputs.VERSION }}-linux-amd64.AppImage` | 推荐，无需安装依赖 |
-            | **Linux (tar.gz)** | `ClearC-${{ steps.version.outputs.VERSION }}-linux-amd64.tar.gz` | 需要安装依赖 |
+            | **Linux** | `ClearC-${{ steps.version.outputs.VERSION }}-linux-amd64.tar.gz` | 需要先安装依赖 |
             
             ### Linux 使用说明
             
-            **AppImage (推荐)**
-            ```bash
-            chmod +x ClearC-*-linux-amd64.AppImage
-            ./ClearC-*-linux-amd64.AppImage
-            ```
+            Linux 版本需要先安装 WebKit2GTK 依赖：
             
-            **tar.gz (需要先安装依赖)**
             ```bash
             # Ubuntu/Debian
-            sudo apt install libwebkit2gtk-4.0-dev
+            sudo apt install libwebkit2gtk-4.0-37
             
             # Fedora
-            sudo dnf install webkit2gtk3-devel
+            sudo dnf install webkit2gtk3
             
             # Arch Linux
             sudo pacman -S webkit2gtk
             
-            # 然后解压运行
-            tar -xzf ClearC-*-linux-amd64.tar.gz
+            # openSUSE
+            sudo zypper install libwebkit2gtk-4_0-37
+            ```
+            
+            然后解压运行：
+            ```bash
+            tar -xzf ClearC-${{ steps.version.outputs.VERSION }}-linux-amd64.tar.gz
+            chmod +x ClearC
             ./ClearC
             ```
