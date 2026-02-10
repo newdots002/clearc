@@ -208,11 +208,13 @@ export default function SettingsPage() {
                 <span className="text-text-primary text-sm">GitHub</span>
               </a>
               <a
-                href="#"
+                href="https://clearc.top"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 bg-bg-hover rounded-lg hover:bg-border transition-colors"
               >
                 <BookOpen size={16} className="text-text-secondary" />
-                <span className="text-text-primary text-sm">文档</span>
+                <span className="text-text-primary text-sm">官网</span>
               </a>
             </div>
           </div>

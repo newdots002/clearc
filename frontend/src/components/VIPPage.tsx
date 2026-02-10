@@ -81,8 +81,9 @@ export default function VIPPage() {
   }
 
   const handleBuyClick = () => {
-    // 打开购买页面
-    BrowserOpenURL('https://clearc.top/pay.php?lang=zh')
+    // 根据本地语言环境设置支付页面语言
+    const lang = navigator.language.startsWith('zh') ? 'zh' : 'en'
+    BrowserOpenURL(`https://clearc.top/pay.php?lang=${lang}`)
   }
 
   const features = [
