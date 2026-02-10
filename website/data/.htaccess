@@ -1,0 +1,12 @@
+# 禁止外网访问此目录
+Order Deny,Allow
+Deny from all
+
+# 禁止目录浏览
+Options -Indexes
+
+# 禁止访问所有文件
+<FilesMatch ".*">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>

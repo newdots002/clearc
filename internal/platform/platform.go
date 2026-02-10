@@ -1,6 +1,8 @@
 package platform
 
 import (
+	"os"
+
 	"github.com/shirou/gopsutil/v3/disk"
 )
 
@@ -34,4 +36,13 @@ type Platform interface {
 	GetUserDataDir() string
 	GetSystemDrive() string
 	GetUserHome() string
+}
+
+// GetHostname returns the machine hostname
+func GetHostname() string {
+	hostname, err := os.Hostname()
+	if err != nil {
+		return "unknown"
+	}
+	return hostname
 }

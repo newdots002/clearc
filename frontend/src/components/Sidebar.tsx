@@ -1,4 +1,4 @@
-import { LayoutDashboard, Settings, HardDrive } from 'lucide-react'
+import { LayoutDashboard, Settings, HardDrive, Crown } from 'lucide-react'
 import type { Page } from '../types'
 
 interface SidebarProps {
@@ -6,9 +6,10 @@ interface SidebarProps {
   onNavigate: (page: Page) => void
 }
 
-const navItems: { id: Page; label: string; icon: typeof LayoutDashboard }[] = [
+const navItems: { id: Page; label: string; icon: typeof LayoutDashboard; highlight?: boolean }[] = [
   { id: 'dashboard', label: '仪表盘', icon: LayoutDashboard },
   { id: 'analyzer', label: '磁盘分析', icon: HardDrive },
+  { id: 'vip', label: 'VIP 会员', icon: Crown, highlight: true },
   { id: 'settings', label: '设置', icon: Settings },
 ]
 
@@ -65,12 +66,14 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
                     isActive
                       ? 'bg-bg-hover text-text-primary'
-                      : 'text-text-secondary hover:bg-bg-hover hover:text-text-primary'
+                      : item.highlight
+                        ? 'text-yellow-500 hover:bg-yellow-500/10'
+                        : 'text-text-secondary hover:bg-bg-hover hover:text-text-primary'
                   }`}
                 >
                   <Icon
                     size={20}
-                    className={isActive ? 'text-accent-blue' : ''}
+                    className={isActive ? 'text-accent-blue' : item.highlight ? 'text-yellow-500' : ''}
                   />
                   <span
                     className={`font-secondary text-sm ${

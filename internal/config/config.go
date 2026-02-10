@@ -33,6 +33,13 @@ type Config struct {
 
 	// UI settings
 	Theme string `json:"theme"`
+
+	// VIP settings
+	IsVIP           bool   `json:"isVip"`
+	VIPActivatedAt  int64  `json:"vipActivatedAt"`  // VIP激活时间戳
+	FirstUseTime    int64  `json:"firstUseTime"`    // 首次使用时间戳
+	TrialDays       int    `json:"trialDays"`       // 试用天数
+	ActivationCode  string `json:"activationCode"`  // 激活码
 }
 
 // New creates a new Config with default values
@@ -54,6 +61,10 @@ func New() *Config {
 		UnusedDaysThreshold: 30,
 		UnusedMinSizeMB:     100,
 		Theme:               "dark",
+		IsVIP:               false,
+		VIPActivatedAt:      0,
+		FirstUseTime:        0,
+		TrialDays:           10,
 	}
 }
 

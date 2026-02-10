@@ -17,6 +17,10 @@ export namespace config {
 	    unusedDaysThreshold: number;
 	    unusedMinSizeMB: number;
 	    theme: string;
+	    isVip: boolean;
+	    vipActivatedAt: number;
+	    firstUseTime: number;
+	    trialDays: number;
 	
 	    static createFrom(source: any = {}) {
 	        return new Config(source);
@@ -40,6 +44,10 @@ export namespace config {
 	        this.unusedDaysThreshold = source["unusedDaysThreshold"];
 	        this.unusedMinSizeMB = source["unusedMinSizeMB"];
 	        this.theme = source["theme"];
+	        this.isVip = source["isVip"];
+	        this.vipActivatedAt = source["vipActivatedAt"];
+	        this.firstUseTime = source["firstUseTime"];
+	        this.trialDays = source["trialDays"];
 	    }
 	}
 
@@ -209,6 +217,42 @@ export namespace main {
 	        this.lastAccessed = source["lastAccessed"];
 	        this.daysUnused = source["daysUnused"];
 	        this.fileType = source["fileType"];
+	    }
+	}
+	export class VIPStatus {
+	    isVip: boolean;
+	    isTrialExpired: boolean;
+	    trialDaysLeft: number;
+	    trialDays: number;
+	    firstUseTime: number;
+	    vipActivatedAt: number;
+
+	    static createFrom(source: any = {}) {
+	        return new VIPStatus(source);
+	    }
+
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.isVip = source["isVip"];
+	        this.isTrialExpired = source["isTrialExpired"];
+	        this.trialDaysLeft = source["trialDaysLeft"];
+	        this.trialDays = source["trialDays"];
+	        this.firstUseTime = source["firstUseTime"];
+	        this.vipActivatedAt = source["vipActivatedAt"];
+	    }
+	}
+	export class ActivationResult {
+	    success: boolean;
+	    message: string;
+
+	    static createFrom(source: any = {}) {
+	        return new ActivationResult(source);
+	    }
+
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.success = source["success"];
+	        this.message = source["message"];
 	    }
 	}
 

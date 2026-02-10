@@ -2,6 +2,13 @@ package main
 
 import (
 	"context"
+	"crypto/md5"
+	"encoding/hex"
+	"encoding/json"
+	"fmt"
+	"io"
+	"net/http"
+	"net/url"
 	"sync"
 	"time"
 
@@ -13,6 +20,9 @@ import (
 
 	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
+
+// 激活码验证服务器地址（请修改为实际地址）
+const ActivationServerURL = "https://clearc.top/check.php"
 
 // App struct
 type App struct {
@@ -470,4 +480,239 @@ func convertFileNode(node *analyzer.FileNode) *FileNode {
 		}
 	}
 	return result
+}
+
+// VIPStatus represents the VIP status information
+type VIPStatus struct {
+	IsVIP          bool  `json:"isVip"`
+	IsTrialExpired bool  `json:"isTrialExpired"`
+	TrialDaysLeft  int   `json:"trialDaysLeft"`
+	TrialDays      int   `json:"trialDays"`
+	FirstUseTime   int64 `json:"firstUseTime"`
+	VIPActivatedAt int64 `json:"vipActivatedAt"`
+}
+
+// GetVIPStatus returns the current VIP status
+func (a *App) GetVIPStatus() *VIPStatus {
+	now := time.Now().Unix()
+	
+	// 如果是首次使用，记录时间
+	if a.config.FirstUseTime == 0 {
+		a.config.FirstUseTime = now
+		a.config.Save()
+	}
+	
+	// 计算试用剩余天数
+	daysSinceFirstUse := int((now - a.config.FirstUseTime) / 86400)
+	trialDaysLeft := a.config.TrialDays - daysSinceFirstUse
+	if trialDaysLeft < 0 {
+		trialDaysLeft = 0
+	}
+	
+	isTrialExpired := !a.config.IsVIP && daysSinceFirstUse >= a.config.TrialDays
+	
+	return &VIPStatus{
+		IsVIP:          a.config.IsVIP,
+		IsTrialExpired: isTrialExpired,
+		TrialDaysLeft:  trialDaysLeft,
+		TrialDays:      a.config.TrialDays,
+		FirstUseTime:   a.config.FirstUseTime,
+		VIPActivatedAt: a.config.VIPActivatedAt,
+	}
+}
+
+// CheckTrialStatus checks if trial has expired (for scan operations)
+func (a *App) CheckTrialStatus() bool {
+	status := a.GetVIPStatus()
+	return status.IsVIP || !status.IsTrialExpired
+}
+
+// ActivationResult represents the result of activation
+type ActivationResult struct {
+	Success bool   `json:"success"`
+	Message string `json:"message"`
+}
+
+// ValidateActivationCode validates the format of an activation code
+func (a *App) ValidateActivationCode(code string) bool {
+	// 激活码格式: XXXX-XXXX-XXXX-XXXX (16位字母数字，用-分隔)
+	if len(code) != 19 {
+		return false
+	}
+	
+	// 检查格式
+	for i, c := range code {
+		if i == 4 || i == 9 || i == 14 {
+			if c != '-' {
+				return false
+			}
+		} else {
+			// 允许大写字母和数字（排除容易混淆的字符 O, I, L, 0, 1）
+			if !((c >= 'A' && c <= 'Z' && c != 'O' && c != 'I' && c != 'L') ||
+				(c >= '2' && c <= '9')) {
+				return false
+			}
+		}
+	}
+	return true
+}
+
+// ServerVerifyResponse represents the response from activation server
+type ServerVerifyResponse struct {
+	Success   bool   `json:"success"`
+	Message   string `json:"message"`
+	Valid     bool   `json:"valid"`
+	Bound     bool   `json:"bound"`
+	Activated bool   `json:"activated"`
+	ErrorCode string `json:"error_code"`
+}
+
+// getDeviceID generates a unique device identifier
+func (a *App) getDeviceID() string {
+	// 使用机器名和配置首次使用时间生成设备ID
+	hostname := platform.GetHostname()
+	data := fmt.Sprintf("%s-%d", hostname, a.config.FirstUseTime)
+	hash := md5.Sum([]byte(data))
+	return hex.EncodeToString(hash[:])
+}
+
+// verifyActivationCodeOnline verifies the activation code with the server
+func (a *App) verifyActivationCodeOnline(code string, action string) (*ServerVerifyResponse, error) {
+	deviceID := a.getDeviceID()
+	
+	// 构建请求URL
+	params := url.Values{}
+	params.Set("action", action)
+	params.Set("code", code)
+	params.Set("device_id", deviceID)
+	
+	reqURL := ActivationServerURL + "?" + params.Encode()
+	
+	// 设置超时
+	client := &http.Client{
+		Timeout: 10 * time.Second,
+	}
+	
+	resp, err := client.Get(reqURL)
+	if err != nil {
+		return nil, fmt.Errorf("网络请求失败: %v", err)
+	}
+	defer resp.Body.Close()
+	
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("读取响应失败: %v", err)
+	}
+	
+	var result ServerVerifyResponse
+	if err := json.Unmarshal(body, &result); err != nil {
+		return nil, fmt.Errorf("解析响应失败: %v", err)
+	}
+	
+	return &result, nil
+}
+
+// ActivateVIP activates VIP status with an activation code
+func (a *App) ActivateVIP(activationCode string) *ActivationResult {
+	// 验证激活码格式
+	if !a.ValidateActivationCode(activationCode) {
+		return &ActivationResult{
+			Success: false,
+			Message: "激活码格式无效，请检查后重试",
+		}
+	}
+	
+	// 检查是否已经是VIP（且使用的是同一个激活码）
+	if a.config.IsVIP && a.config.ActivationCode == activationCode {
+		return &ActivationResult{
+			Success: false,
+			Message: "您已经是永久VIP用户",
+		}
+	}
+	
+	// 在线验证并激活激活码
+	verifyResult, err := a.verifyActivationCodeOnline(activationCode, "activate")
+	if err != nil {
+		// 网络错误时，尝试使用本地验证（兼容离线场景）
+		// 如果之前已经用这个激活码激活过，允许重新激活
+		if a.config.ActivationCode == activationCode {
+			a.config.IsVIP = true
+			a.config.Save()
+			return &ActivationResult{
+				Success: true,
+				Message: "恭喜！您已成功激活永久VIP（离线模式）",
+			}
+		}
+		return &ActivationResult{
+			Success: false,
+			Message: fmt.Sprintf("验证失败：%v", err),
+		}
+	}
+	
+	if !verifyResult.Success {
+		return &ActivationResult{
+			Success: false,
+			Message: verifyResult.Message,
+		}
+	}
+	
+	// 激活成功，保存到本地配置
+	a.config.IsVIP = true
+	a.config.VIPActivatedAt = time.Now().Unix()
+	a.config.ActivationCode = activationCode
+	
+	if err := a.config.Save(); err != nil {
+		return &ActivationResult{
+			Success: false,
+			Message: "保存配置失败，请重试",
+		}
+	}
+	
+	return &ActivationResult{
+		Success: true,
+		Message: "恭喜！您已成功激活永久VIP",
+	}
+}
+
+// VerifyActivationCode verifies an activation code without activating
+func (a *App) VerifyActivationCode(code string) *ActivationResult {
+	if !a.ValidateActivationCode(code) {
+		return &ActivationResult{
+			Success: false,
+			Message: "激活码格式无效",
+		}
+	}
+	
+	result, err := a.verifyActivationCodeOnline(code, "verify")
+	if err != nil {
+		return &ActivationResult{
+			Success: false,
+			Message: fmt.Sprintf("验证失败：%v", err),
+		}
+	}
+	
+	return &ActivationResult{
+		Success: result.Success,
+		Message: result.Message,
+	}
+}
+
+// isActivationCodeUsed checks if an activation code has been used locally
+func (a *App) isActivationCodeUsed(code string) bool {
+	return a.config.ActivationCode == code
+}
+
+// DeactivateVIP deactivates VIP status (for testing)
+func (a *App) DeactivateVIP() error {
+	a.config.IsVIP = false
+	a.config.VIPActivatedAt = 0
+	return a.config.Save()
+}
+
+// ResetTrial resets the trial period (for testing)
+func (a *App) ResetTrial() error {
+	a.config.FirstUseTime = time.Now().Unix()
+	a.config.IsVIP = false
+	a.config.VIPActivatedAt = 0
+	return a.config.Save()
 }

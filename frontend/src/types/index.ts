@@ -61,4 +61,13 @@ export interface Config {
   };
 }
 
-export type Page = 'dashboard' | 'analyzer' | 'settings';
+export type Page = 'dashboard' | 'analyzer' | 'vip' | 'settings';
+
+export interface VIPStatus {
+  isVip: boolean;
+  isTrialExpired: boolean;
+  trialDaysLeft: number;
+  trialDays: number;
+  firstUseTime: number;
+  vipActivatedAt: number;
+}

@@ -42,3 +42,17 @@ export function SaveConfig(arg1:config.Config):Promise<void>;
 export function ScanForJunk():Promise<main.ScanResult>;
 
 export function SetAnalyzerMinSize(arg1:number):Promise<void>;
+
+export function GetVIPStatus():Promise<main.VIPStatus>;
+
+export function CheckTrialStatus():Promise<boolean>;
+
+export function ActivateVIP(arg1:string):Promise<main.ActivationResult>;
+
+export function VerifyActivationCode(arg1:string):Promise<main.ActivationResult>;
+
+export function ValidateActivationCode(arg1:string):Promise<boolean>;
+
+export function DeactivateVIP():Promise<void>;
+
+export function ResetTrial():Promise<void>;

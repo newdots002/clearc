@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearC - Clean Your Disk, Reclaim Your Space</title>
+    <meta name="description" content="ClearC is a powerful cross-platform disk cleanup tool designed for developers. Quickly analyze disk usage and clean up development junk files.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%2322D3EE' rx='15' width='100' height='100'/><text x='50' y='70' font-size='60' font-weight='bold' text-anchor='middle' fill='%230A0F1C'>C</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">C</div>
+                <span class="logo-name">ClearC</span>
+            </div>
+            <nav class="nav-section">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#faq" class="nav-link">Docs</a>
+                <a href="https://github.com/newdots002/clearc" target="_blank" class="nav-link">GitHub</a>
+            </nav>
+            <div class="cta-section">
+                <a href="zh.html" class="lang-switch">EN / 中文</a>
+                <a href="#download" class="btn btn-primary">Download</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#faq" class="nav-link">Docs</a>
+        <a href="https://github.com/newdots002/clearc" target="_blank" class="nav-link">GitHub</a>
+        <a href="zh.html" class="lang-switch">EN / 中文</a>
+        <a href="#download" class="btn btn-primary">Download</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                <span class="badge-text">v1.0 Released — Cross-platform disk cleaner</span>
+            </div>
+            <h1 class="headline">Clean Your Disk.<br>Reclaim Your Space.</h1>
+            <p class="subheadline">ClearC is a powerful cross-platform tool designed for developers.<br>Quickly analyze disk usage and clean up development junk files.</p>
+            <div class="cta-row">
+                <a href="#download" class="btn btn-primary btn-lg">Download Free</a>
+                <a href="https://github.com/newdots002/clearc" target="_blank" class="btn btn-secondary btn-lg">View on GitHub</a>
+            </div>
+            <div class="platform-row">
+                <span class="platform-label">Available for</span>
+                <span class="platform-item">Windows</span>
+                <span class="platform-item">macOS</span>
+                <span class="platform-item">Linux</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="story-header">
+            <span class="story-label">HOW IT WORKS</span>
+            <h2 class="story-title">See How ClearC Frees Up Your C: Drive</h2>
+        </div>
+        <div class="story-grid">
+            <!-- Step 1 -->
+            <div class="story-card">
+                <div class="story-card-image">
+                    <img src="images/空间i清理无法清理干净.png" alt="Traditional cleanup tools limited">
+                </div>
+                <div class="story-card-content">
+                    <span class="story-card-step">1</span>
+                    <h3 class="story-card-title">Traditional Tools Are Limited</h3>
+                    <p class="story-card-desc">System cleanup tools only free 39.5MB. C: drive still shows critical red status</p>
+                </div>
+            </div>
+            <!-- Step 2 -->
+            <div class="story-card">
+                <div class="story-card-image">
+                    <img src="images/忘记的一些项目占用了很大空间.png" alt="Discover forgotten projects">
+                </div>
+                <div class="story-card-content">
+                    <span class="story-card-step">2</span>
+                    <h3 class="story-card-title">Discover Hidden Space Hogs</h3>
+                    <p class="story-card-desc">ClearC reveals forgotten project folders taking up massive disk space</p>
+                </div>
+            </div>
+            <!-- Step 3 -->
+            <div class="story-card">
+                <div class="story-card-image">
+                    <img src="images/这种日志文件肯定是可以删除的.png" alt="Identify deletable log files">
+                </div>
+                <div class="story-card-content">
+                    <span class="story-card-step">3</span>
+                    <h3 class="story-card-title">Smart File Identification</h3>
+                    <p class="story-card-desc">Automatically marks logs and cache files that are safe to delete</p>
+                </div>
+            </div>
+            <!-- Step 4 -->
+            <div class="story-card">
+                <div class="story-card-image">
+                    <img src="images/删除了日志释放了3个G.png" alt="Free up space after cleanup">
+                </div>
+                <div class="story-card-content">
+                    <span class="story-card-step">4</span>
+                    <h3 class="story-card-title">One-Click Cleanup</h3>
+                    <p class="story-card-desc">Select files and clean with one click. Instantly free 3.29GB of space</p>
+                </div>
+            </div>
+            <!-- Step 5 - Highlight -->
+            <div class="story-card highlight">
+                <div class="story-card-image">
+                    <img src="images/C盘终于不是红色的了.png" alt="C drive restored to healthy">
+                </div>
+                <div class="story-card-content">
+                    <span class="story-card-step">✓</span>
+                    <h3 class="story-card-title">C: Drive Is No Longer Red!</h3>
+                    <p class="story-card-desc">After cleanup, C: drive status changes from critical red to healthy blue</p>
+                </div>
+            </div>
+            <!-- Step 6 -->
+            <div class="story-card">
+                <div class="story-card-image">
+                    <img src="images/一下子就健康了.png" alt="Disk health restored">
+                </div>
+                <div class="story-card-content">
+                    <span class="story-card-step">6</span>
+                    <h3 class="story-card-title">Disk Health Restored</h3>
+                    <p class="story-card-desc">Dashboard shows 163.7GB used, 35.6GB free. System runs smoother</p>
+                </div>
+            </div>
+        </div>
+        <!-- Result Banner -->
+        <div class="story-result">
+            <div class="story-result-item">
+                <div class="story-result-value">3.29 GB</div>
+                <div class="story-result-label">Space Freed</div>
+            </div>
+            <div class="story-result-item">
+                <div class="story-result-value">74,388</div>
+                <div class="story-result-label">Files Cleaned</div>
+            </div>
+            <div class="story-result-item">
+                <div class="story-result-value">82.1%</div>
+                <div class="story-result-label">Disk Usage Reduced To</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="section-header">
+            <span class="section-label">FEATURES</span>
+            <h2 class="section-title">Everything you need to clean your disk</h2>
+            <p class="section-subtitle">Built for developers who care about disk space</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+                </div>
+                <h3 class="feature-title">Disk Analysis</h3>
+                <p class="feature-desc">Visualize disk space usage with an intuitive tree view. Find large files and folders instantly.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                </div>
+                <h3 class="feature-title">Smart Cleanup</h3>
+                <p class="feature-desc">Automatically detect and clean node_modules, Go cache, Python cache, Rust target, and more.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+                </div>
+                <h3 class="feature-title">Safe & Protected</h3>
+                <p class="feature-desc">System directories are protected by default. Clear recommendations help you make safe decisions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="section-header">
+            <span class="section-label">PRICING</span>
+            <h2 class="section-title">Simple, transparent pricing</h2>
+            <p class="section-subtitle">Pay once, use forever. No subscriptions.</p>
+        </div>
+        <div class="pricing-cards">
+            <div class="pricing-card">
+                <h3 class="pricing-title">Free Trial</h3>
+                <div class="pricing-price">
+                    <span class="price-amount">¥0</span>
+                    <span class="price-period">/ 10 days</span>
+                </div>
+                <p class="pricing-desc">Try all features free for 10 days</p>
+                <ul class="pricing-features">
+                    <li>✓ Full disk analysis</li>
+                    <li>✓ Smart cleanup suggestions</li>
+                    <li>✓ Cross-platform support</li>
+                </ul>
+                <a href="#download" class="btn btn-outline btn-block">Start Free Trial</a>
+            </div>
+            <div class="pricing-card pricing-card-featured">
+                <div class="pricing-badge">RECOMMENDED</div>
+                <h3 class="pricing-title">Lifetime VIP</h3>
+                <div class="pricing-price">
+                    <span class="price-amount">¥5</span>
+                    <span class="price-period">/ forever</span>
+                </div>
+                <p class="pricing-desc">One-time payment, lifetime access</p>
+                <ul class="pricing-features">
+                    <li>✓ Everything in Free Trial</li>
+                    <li>✓ Unlimited disk analysis</li>
+                    <li>✓ Auto background scanning</li>
+                    <li>✓ Priority support</li>
+                    <li>✓ All future updates</li>
+                </ul>
+                <a href="pay.php" class="btn btn-dark btn-block">Get Lifetime Access</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="section-header">
+            <span class="section-label">FAQ</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <h3 class="faq-question">What types of files does ClearC clean?</h3>
+                <p class="faq-answer">ClearC targets development cache files like node_modules, Go module cache, Python __pycache__, Rust target directories, and other temporary build artifacts.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Is it safe to delete these files?</h3>
+                <p class="faq-answer">Yes! ClearC only targets regenerable cache and build files. Your source code and important data are protected. You can always rebuild these files when needed.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">What happens after the 10-day trial?</h3>
+                <p class="faq-answer">After the trial, you can purchase a lifetime VIP license for just ¥5. This is a one-time payment that unlocks all features forever, including future updates.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Does ClearC support all operating systems?</h3>
+                <p class="faq-answer">Yes! ClearC is built with cross-platform support. It runs natively on Windows, macOS (Intel and Apple Silicon), and Linux.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="final-cta-section">
+        <h2 class="cta-title">Ready to reclaim your disk space?</h2>
+        <p class="cta-subtitle">Download ClearC now and start cleaning in seconds.</p>
+        <div class="cta-buttons">
+            <a href="https://github.com/newdots002/clearc/releases" target="_blank" class="btn btn-primary btn-lg">Download Free</a>
+            <a href="#faq" class="btn btn-secondary btn-lg">View Documentation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <div class="logo-icon">C</div>
+                    <span class="logo-name">ClearC</span>
+                </div>
+                <p class="footer-tagline">A powerful disk cleanup tool for developers. Clean your disk, reclaim your space.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#download">Download</a>
+                    <a href="https://github.com/newdots002/clearc/releases">Changelog</a>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Resources</h4>
+                    <a href="#faq">Documentation</a>
+                    <a href="https://github.com/newdots002/clearc">GitHub</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="mailto:support@clearc.top">Support</a>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Legal</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="https://github.com/newdots002/clearc/blob/main/LICENSE">License</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">© 2026 ClearC. All rights reserved.</p>
+            <a href="zh.html" class="lang-switch">English / 中文</a>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

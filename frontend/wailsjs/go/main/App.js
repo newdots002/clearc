@@ -81,3 +81,31 @@ export function ScanForJunk() {
 export function SetAnalyzerMinSize(arg1) {
   return window['go']['main']['App']['SetAnalyzerMinSize'](arg1);
 }
+
+export function GetVIPStatus() {
+  return window['go']['main']['App']['GetVIPStatus']();
+}
+
+export function CheckTrialStatus() {
+  return window['go']['main']['App']['CheckTrialStatus']();
+}
+
+export function ActivateVIP(arg1) {
+  return window['go']['main']['App']['ActivateVIP'](arg1);
+}
+
+export function VerifyActivationCode(arg1) {
+  return window['go']['main']['App']['VerifyActivationCode'](arg1);
+}
+
+export function ValidateActivationCode(arg1) {
+  return window['go']['main']['App']['ValidateActivationCode'](arg1);
+}
+
+export function DeactivateVIP() {
+  return window['go']['main']['App']['DeactivateVIP']();
+}
+
+export function ResetTrial() {
+  return window['go']['main']['App']['ResetTrial']();
+}
