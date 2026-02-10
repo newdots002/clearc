@@ -3,7 +3,6 @@ import { Power, RefreshCw, Minimize2, Github, BookOpen, Loader2, Save, Check } f
 import { GetConfig, SaveConfig } from '../../wailsjs/go/main/App'
 import { BrowserOpenURL } from '../../wailsjs/runtime/runtime'
 import { config } from '../../wailsjs/go/models'
-import { BrowserOpenURL } from '../../wailsjs/runtime/runtime'
 
 interface ToggleProps {
   enabled: boolean
