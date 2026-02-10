@@ -123,13 +123,13 @@ jobs:
       - name: Install Linux dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libfuse2
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.1-dev pkg-config
 
       - name: Install Wails
         run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
       - name: Build Linux (amd64)
-        run: wails build -platform linux/amd64
+        run: wails build -platform linux/amd64 -tags webkit2_41
 
       - name: Get version
         id: version
@@ -190,20 +190,20 @@ jobs:
             
             ### Linux 使用说明
             
-            Linux 版本需要先安装 WebKit2GTK 依赖：
+            Linux 版本需要先安装 WebKit2GTK 4.1 依赖：
             
             ```bash
-            # Ubuntu/Debian
-            sudo apt install libwebkit2gtk-4.0-37
+            # Ubuntu 24.04+ / Debian 12+
+            sudo apt install libwebkit2gtk-4.1-0
             
-            # Fedora
-            sudo dnf install webkit2gtk3
+            # Fedora 39+
+            sudo dnf install webkit2gtk4.1
             
             # Arch Linux
-            sudo pacman -S webkit2gtk
+            sudo pacman -S webkit2gtk-4.1
             
-            # openSUSE
-            sudo zypper install libwebkit2gtk-4_0-37
+            # openSUSE Tumbleweed
+            sudo zypper install libwebkit2gtk-4_1-0
             ```
             
             然后解压运行：
