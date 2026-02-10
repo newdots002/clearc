@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"sync"
+	"time"
 
 	"clearc/internal/analyzer"
 	"clearc/internal/cleaner"
@@ -14,11 +16,15 @@ import (
 
 // App struct
 type App struct {
-	ctx      context.Context
-	scanner  *scanner.Scanner
-	cleaner  *cleaner.Cleaner
-	config   *config.Config
-	analyzer *analyzer.Analyzer
+	ctx                context.Context
+	scanner            *scanner.Scanner
+	cleaner            *cleaner.Cleaner
+	config             *config.Config
+	analyzer           *analyzer.Analyzer
+	autoAnalyzeStop    chan struct{}
+	autoAnalyzeMutex   sync.Mutex
+	lastAnalyzeTime    time.Time
+	isAutoAnalyzing    bool
 }
 
 // NewApp creates a new App application struct
@@ -35,12 +41,114 @@ func NewApp() *App {
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 	a.config.Load()
+	
+	// 启动自动分析（如果已开启）
+	if a.config.AutoAnalyze {
+		a.startAutoAnalyze()
+	}
 }
 
 // shutdown is called when the app is closing
 func (a *App) shutdown(ctx context.Context) {
+	a.stopAutoAnalyze()
 	a.config.Save()
 	a.analyzer.SaveCache()
+}
+
+// startAutoAnalyze 启动后台自动分析
+func (a *App) startAutoAnalyze() {
+	a.autoAnalyzeMutex.Lock()
+	defer a.autoAnalyzeMutex.Unlock()
+	
+	if a.autoAnalyzeStop != nil {
+		return // 已经在运行
+	}
+	
+	a.autoAnalyzeStop = make(chan struct{})
+	
+	go func() {
+		// 首次启动延迟5分钟再开始
+		initialDelay := time.NewTimer(5 * time.Minute)
+		select {
+		case <-initialDelay.C:
+		case <-a.autoAnalyzeStop:
+			initialDelay.Stop()
+			return
+		}
+		
+		for {
+			// 检查距离上次分析的时间
+			interval := time.Duration(a.config.AutoAnalyzeInterval) * time.Minute
+			if interval < 30*time.Minute {
+				interval = 30 * time.Minute // 最小30分钟
+			}
+			
+			timeSinceLastAnalyze := time.Since(a.lastAnalyzeTime)
+			if timeSinceLastAnalyze >= interval {
+				a.runBackgroundAnalyze()
+			}
+			
+			// 每10分钟检查一次
+			checkTimer := time.NewTimer(10 * time.Minute)
+			select {
+			case <-checkTimer.C:
+				continue
+			case <-a.autoAnalyzeStop:
+				checkTimer.Stop()
+				return
+			}
+		}
+	}()
+}
+
+// stopAutoAnalyze 停止后台自动分析
+func (a *App) stopAutoAnalyze() {
+	a.autoAnalyzeMutex.Lock()
+	defer a.autoAnalyzeMutex.Unlock()
+	
+	if a.autoAnalyzeStop != nil {
+		close(a.autoAnalyzeStop)
+		a.autoAnalyzeStop = nil
+	}
+}
+
+// runBackgroundAnalyze 执行后台分析
+func (a *App) runBackgroundAnalyze() {
+	if a.isAutoAnalyzing {
+		return
+	}
+	
+	a.isAutoAnalyzing = true
+	defer func() {
+		a.isAutoAnalyzing = false
+		a.lastAnalyzeTime = time.Now()
+	}()
+	
+	// 静默执行快速扫描，只更新缓存
+	result, err := a.analyzer.QuickScan()
+	if err != nil {
+		return
+	}
+	
+	// 计算大小并更新缓存（静默，不发送事件到前端）
+	a.analyzer.CalculateSizesAsync(result.Children, false, nil)
+	
+	// 通知前端缓存已更新（可选）
+	if a.ctx != nil {
+		runtime.EventsEmit(a.ctx, "backgroundAnalyzeComplete", map[string]interface{}{
+			"time": time.Now().Unix(),
+		})
+	}
+}
+
+// GetLastAnalyzeTime 获取上次分析时间
+func (a *App) GetLastAnalyzeTime() int64 {
+	return a.lastAnalyzeTime.Unix()
+}
+
+// IsAutoAnalyzing 检查是否正在自动分析
+func (a *App) IsAutoAnalyzing() bool {
+	return a.isAutoAnalyzing
 }
 
 // DiskUsage represents disk usage information
@@ -180,7 +288,16 @@ func (a *App) GetConfig() *config.Config {
 
 // SaveConfig saves the configuration
 func (a *App) SaveConfig(cfg *config.Config) error {
+	oldAutoAnalyze := a.config.AutoAnalyze
 	a.config = cfg
+	
+	// 处理自动分析设置变化
+	if cfg.AutoAnalyze && !oldAutoAnalyze {
+		a.startAutoAnalyze()
+	} else if !cfg.AutoAnalyze && oldAutoAnalyze {
+		a.stopAutoAnalyze()
+	}
+	
 	return a.config.Save()
 }
 

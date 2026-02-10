@@ -14,8 +14,8 @@ type Config struct {
 	StartOnBoot       bool `json:"startOnBoot"`
 	MinimizeToTray    bool `json:"minimizeToTray"`
 	ShowNotifications bool `json:"showNotifications"`
-	ScanReminder      bool `json:"scanReminder"`
-	ReminderDays      int  `json:"reminderDays"`
+	AutoAnalyze       bool `json:"autoAnalyze"`
+	AutoAnalyzeInterval int `json:"autoAnalyzeInterval"` // 自动分析间隔（分钟）
 
 	// Scan settings
 	ScanNodeModules  bool `json:"scanNodeModules"`
@@ -41,8 +41,8 @@ func New() *Config {
 		StartOnBoot:         true,
 		MinimizeToTray:      true,
 		ShowNotifications:   true,
-		ScanReminder:        false,
-		ReminderDays:        7,
+		AutoAnalyze:         false,
+		AutoAnalyzeInterval: 90, // 默认90分钟
 		ScanNodeModules:     true,
 		ScanGoCache:         true,
 		ScanPythonCache:     true,

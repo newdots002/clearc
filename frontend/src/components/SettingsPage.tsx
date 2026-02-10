@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Power, BellRing, Minimize2, Github, BookOpen, HardDrive, Loader2, Save, Check } from 'lucide-react'
-import { GetConfig, SaveConfig, GetDiskUsage } from '../../wailsjs/go/main/App'
+import { Power, RefreshCw, Minimize2, Github, BookOpen, Loader2, Save, Check } from 'lucide-react'
+import { GetConfig, SaveConfig } from '../../wailsjs/go/main/App'
 import { config } from '../../wailsjs/go/models'
 
 interface ToggleProps {
@@ -25,17 +25,8 @@ function Toggle({ enabled, onChange }: ToggleProps) {
   )
 }
 
-function formatBytes(bytes: number): string {
-  if (bytes === 0) return '0 B'
-  const k = 1024
-  const sizes = ['B', 'KB', 'MB', 'GB', 'TB']
-  const i = Math.floor(Math.log(bytes) / Math.log(k))
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i]
-}
-
 export default function SettingsPage() {
   const [appConfig, setAppConfig] = useState<config.Config | null>(null)
-  const [diskUsage, setDiskUsage] = useState<{ total: number; used: number; free: number } | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isSaving, setIsSaving] = useState(false)
   const [saveSuccess, setSaveSuccess] = useState(false)
@@ -47,12 +38,8 @@ export default function SettingsPage() {
   const loadData = async () => {
     setIsLoading(true)
     try {
-      const [cfg, usage] = await Promise.all([
-        GetConfig(),
-        GetDiskUsage()
-      ])
+      const cfg = await GetConfig()
       setAppConfig(cfg)
-      setDiskUsage(usage)
     } catch (error) {
       console.error('Failed to load config:', error)
     } finally {
@@ -95,10 +82,10 @@ export default function SettingsPage() {
       key: 'minimizeToTray' as const,
     },
     {
-      icon: BellRing,
-      label: '定期扫描提醒',
-      description: '定期提醒清理垃圾文件',
-      key: 'scanReminder' as const,
+      icon: RefreshCw,
+      label: '定期扫描分析',
+      description: '后台定期分析重点目录，加速下次查看',
+      key: 'autoAnalyze' as const,
     },
   ]
 
@@ -117,8 +104,6 @@ export default function SettingsPage() {
       </div>
     )
   }
-
-  const usedPercent = diskUsage ? (diskUsage.used / diskUsage.total) * 100 : 0
 
   return (
     <div className="p-8 space-y-6">
@@ -155,10 +140,9 @@ export default function SettingsPage() {
       </div>
 
       {/* Main Content */}
-      <div className="flex gap-6">
-        {/* Left Column */}
-        <div className="flex-1 space-y-6">
-          {/* General Settings */}
+      <div className="flex gap-6 items-start">
+        {/* Left Column - General Settings */}
+        <div className="flex-1">
           <div className="bg-bg-card border border-border rounded-xl p-6 space-y-4">
             <h2 className="font-primary text-lg font-semibold text-text-primary">
               常规设置
@@ -193,12 +177,10 @@ export default function SettingsPage() {
               })}
             </div>
           </div>
-
         </div>
 
-        {/* Right Column */}
-        <div className="w-80 space-y-6">
-          {/* About Card */}
+        {/* Right Column - About Card */}
+        <div className="w-80">
           <div className="bg-bg-card border border-border rounded-xl p-6 space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-accent-blue rounded-xl flex items-center justify-center">
@@ -217,7 +199,7 @@ export default function SettingsPage() {
             </p>
             <div className="flex gap-3">
               <a
-                href="https://github.com"
+                href="https://github.com/newdots002/clearc"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 bg-bg-hover rounded-lg hover:bg-border transition-colors"
@@ -234,51 +216,6 @@ export default function SettingsPage() {
               </a>
             </div>
           </div>
-
-          {/* Storage Stats */}
-          {diskUsage && (
-            <div className="bg-bg-card border border-border rounded-xl p-6 space-y-4">
-              <div className="flex items-center gap-2">
-                <HardDrive size={18} className="text-accent-blue" />
-                <h3 className="font-primary text-base font-semibold text-text-primary">
-                  存储统计
-                </h3>
-              </div>
-              <div className="space-y-3">
-                <div className="flex justify-between text-sm">
-                  <span className="text-text-secondary">已使用</span>
-                  <span className="text-text-primary font-medium">
-                    {formatBytes(diskUsage.used)}
-                  </span>
-                </div>
-                <div className="w-full h-2 bg-border rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full"
-                    style={{
-                      width: `${usedPercent}%`,
-                      background: usedPercent > 90 
-                        ? '#EF4444' 
-                        : usedPercent > 70 
-                          ? '#F59E0B' 
-                          : 'linear-gradient(90deg, #3B82F6 0%, #22C55E 100%)',
-                    }}
-                  />
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-text-secondary">可用空间</span>
-                  <span className="text-accent-green font-medium">
-                    {formatBytes(diskUsage.free)}
-                  </span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-text-secondary">总容量</span>
-                  <span className="text-text-primary font-medium">
-                    {formatBytes(diskUsage.total)}
-                  </span>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>

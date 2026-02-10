@@ -47,15 +47,9 @@ func main() {
 					runtime.WindowSetAlwaysOnTop(ctx, true)
 					runtime.WindowSetAlwaysOnTop(ctx, false)
 				},
-				func() { // onQuickScan
+				func() { // onDiskAnalyzer
 					runtime.WindowShow(ctx)
-					runtime.EventsEmit(ctx, "navigate", "scan")
-					runtime.EventsEmit(ctx, "startScan")
-				},
-				func() { // onClean
-					runtime.WindowShow(ctx)
-					runtime.EventsEmit(ctx, "navigate", "scan")
-					runtime.EventsEmit(ctx, "startClean")
+					runtime.EventsEmit(ctx, "navigate", "disk-analyzer")
 				},
 				func() { // onSettings
 					runtime.WindowShow(ctx)

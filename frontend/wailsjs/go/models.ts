@@ -4,8 +4,8 @@ export namespace config {
 	    startOnBoot: boolean;
 	    minimizeToTray: boolean;
 	    showNotifications: boolean;
-	    scanReminder: boolean;
-	    reminderDays: number;
+	    autoAnalyze: boolean;
+	    autoAnalyzeInterval: number;
 	    scanNodeModules: boolean;
 	    scanGoCache: boolean;
 	    scanPythonCache: boolean;
@@ -27,8 +27,8 @@ export namespace config {
 	        this.startOnBoot = source["startOnBoot"];
 	        this.minimizeToTray = source["minimizeToTray"];
 	        this.showNotifications = source["showNotifications"];
-	        this.scanReminder = source["scanReminder"];
-	        this.reminderDays = source["reminderDays"];
+	        this.autoAnalyze = source["autoAnalyze"];
+	        this.autoAnalyzeInterval = source["autoAnalyzeInterval"];
 	        this.scanNodeModules = source["scanNodeModules"];
 	        this.scanGoCache = source["scanGoCache"];
 	        this.scanPythonCache = source["scanPythonCache"];

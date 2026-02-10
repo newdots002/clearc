@@ -6,11 +6,10 @@ import (
 
 // TrayApp represents the system tray application
 type TrayApp struct {
-	onShow      func()
-	onQuickScan func()
-	onClean     func()
-	onSettings  func()
-	onQuit      func()
+	onShow         func()
+	onDiskAnalyzer func()
+	onSettings     func()
+	onQuit         func()
 }
 
 // New creates a new TrayApp instance
@@ -19,10 +18,9 @@ func New() *TrayApp {
 }
 
 // SetCallbacks sets the callback functions for tray menu items
-func (t *TrayApp) SetCallbacks(onShow, onQuickScan, onClean, onSettings, onQuit func()) {
+func (t *TrayApp) SetCallbacks(onShow, onDiskAnalyzer, onSettings, onQuit func()) {
 	t.onShow = onShow
-	t.onQuickScan = onQuickScan
-	t.onClean = onClean
+	t.onDiskAnalyzer = onDiskAnalyzer
 	t.onSettings = onSettings
 	t.onQuit = onQuit
 }
@@ -45,8 +43,7 @@ func (t *TrayApp) onReady() {
 	// Menu items
 	mShow := systray.AddMenuItem("打开主窗口", "显示 ClearC 主窗口")
 	systray.AddSeparator()
-	mQuickScan := systray.AddMenuItem("快速扫描", "扫描系统垃圾文件")
-	mClean := systray.AddMenuItem("一键清理", "清理所有垃圾文件")
+	mDiskAnalyzer := systray.AddMenuItem("磁盘分析", "分析磁盘空间占用")
 	systray.AddSeparator()
 	mSettings := systray.AddMenuItem("设置", "打开设置页面")
 	systray.AddSeparator()
@@ -60,13 +57,9 @@ func (t *TrayApp) onReady() {
 				if t.onShow != nil {
 					t.onShow()
 				}
-			case <-mQuickScan.ClickedCh:
-				if t.onQuickScan != nil {
-					t.onQuickScan()
-				}
-			case <-mClean.ClickedCh:
-				if t.onClean != nil {
-					t.onClean()
+			case <-mDiskAnalyzer.ClickedCh:
+				if t.onDiskAnalyzer != nil {
+					t.onDiskAnalyzer()
 				}
 			case <-mSettings.ClickedCh:
 				if t.onSettings != nil {
